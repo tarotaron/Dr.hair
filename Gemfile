@@ -60,3 +60,11 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'devise'
+
+### Refile
+# For File UPload 
+gem "refile", require: "refile/rails", github: 'manfe/refile' 
+# For Resize Image Uploaded 
+gem "refile-mini_magick"
