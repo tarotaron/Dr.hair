@@ -3,12 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :posts, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :favorites, dependent: :destroy
-  attachment :icon_image
+  # has_many :posts, dependent: :destroy
+  # has_many :comments, dependent: :destroy
+  # has_many :favorites, dependent: :destroy
+  # attachment :icon_image
 
-  validates :name, predence:true
-  validates :encrypted_password, predence:true
+  # validates :name, presence:true
+  # validates :encrypted_password, presence:true
 
 end

@@ -11,5 +11,10 @@ Rails.application.routes.draw do
       passwords:     'users/passwords',
       registrations: 'users/registrations'
   }
+
+  namespace :admin do
+  	resources :forms, only:[:index, :create, :destroy]
+  	resources :lengths, only:[:index, :create, :destroy]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

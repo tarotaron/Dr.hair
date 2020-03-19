@@ -1,5 +1,5 @@
 class Length < ApplicationRecord
-	has_many :styles, dependent: :destroy
+	# has_many :styles, dependent: :destroy
     attachment :length_image
 
 	validates :length_name, presence: true
