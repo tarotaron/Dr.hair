@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_035743) do
   end
 
   create_table "lengths", force: :cascade do |t|
-    t.string "length_neme", null: false
+    t.string "length_name", null: false
     t.string "length_image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
