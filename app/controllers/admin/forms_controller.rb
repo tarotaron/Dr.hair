@@ -6,9 +6,13 @@ class Admin::FormsController < ApplicationController
 
 	def create
 		@form = Form.new(form_params)
-	    @form.save
-	    flash[:notice] = "You have creatad form."
-	    redirect_to  admin_forms_path(@form)
+	    if @form.save
+	    flash[:notice] = "creatad form."
+	    redirect_to 'index'
+	    else
+	    @forms = Form.all
+	    render 'index'
+		end
 	end
 
 	def destroy

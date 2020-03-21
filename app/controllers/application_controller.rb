@@ -1,19 +1,19 @@
 class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def adter_sign_in_path_for(resource)
+  def after_sign_in_path_for(resource)
   	case resource
 	  	when Admin
-	  		admin_homes_path
+	  		admins_stiyls_path
 	  	when User
-	  		user_root_path
+	  		root_path
   	end
   end
 
   def after_sign_out_path_for(resource)
-  	if request.fullpath == "/admin/sign_out"
+  	if request.fullpath == "/admins/sign_out"
     #if request.referer&.include?("/admin/sign_out")
-    	new_admin_session_path
+    	new_admins_session_path
     else
     	new_user_ssesion_path
     end

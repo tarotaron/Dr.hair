@@ -6,9 +6,12 @@ class Admin::LengthsController < ApplicationController
 
 	def create
 		@length = Length.new(length_params)
-	    @length.save
-	    flash[:notice] = "You have creatad length."
-	    redirect_to  admin_lengths_path(@length)
+	    if @length.save
+	    flash[:notice] = "creatad length."
+	    redirect_to 'index'
+		else
+		@lengths = Length.all
+	    render 'index'
 	end
 
 	def destroy
