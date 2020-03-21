@@ -12,6 +12,7 @@ class Admin::LengthsController < ApplicationController
 		else
 		@lengths = Length.all
 	    render 'index'
+		end
 	end
 
 	def destroy
