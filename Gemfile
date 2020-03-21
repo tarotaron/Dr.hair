@@ -71,5 +71,5 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 # For Resize Image Uploaded 
 gem "refile-mini_magick"
 
-gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap-sass'
 gem 'jquery-rails'
