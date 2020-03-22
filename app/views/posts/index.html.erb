@@ -1,0 +1,110 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8">
+			<h1>POST</h1>
+			<%= flash[:notice] %>
+		</div>
+		<div class="col-xs-4">
+			<div class="new_post.model">
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createModel">
+					<span class="glyphicon glyphicon-plus-sign" ></span>
+				</button>
+					<!-- modal＝閉じるまで他のことができない　data-toggle=開閉する事ができる　data-target=場所指定 -->
+				<div class="modal" id="createModel" role="dialog" >
+					<!-- role=役職　dialog＝時的に開かれる小さい画面-->
+				  <div class="modal-dialog modal-dialog-centered" >
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h1 class="modal-title">New Post</h1>
+				        <button type="button" class="close" data-dismiss="modal" >
+				          <span class="glyphicon glyphicon-remove" ></span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+						<%= form_for @post do |f| %>
+					 		<div class="row">
+				 		    	<div class="form-group">
+				 		    		<%= f.text_field :title %>
+				 		    	</div>
+				 		    	<div class="form-group">
+				 		    		<%= f.text_area :post_body %>
+				 		    	</div>
+					 		</div>
+					 		<div class="row">
+					 			<div class="col-xs-2">
+					 		    	<div class="form-group">
+					 		    		<%= f.text_field :winding %>
+					 		    	</div>
+					 		    </div>
+					 		    <div class="col-xs-2">
+					 		    	<div class="form-group">
+					 		    		<%= f.text_field :item %>
+					 		    	</div>
+					 		    </div>
+					 		    <div class="col-xs-2">
+					 		    	<div class="form-group">
+					 		    		<%= f.text_field :size %>
+					 		    	</div>
+					 		    </div>
+					 		</div>
+					        <div class="row">
+								<div class="form-group">
+					                <%= f.attachment_field :post_image %>
+				 		    	</div>
+				 		    </div>
+				 	  </div>
+					  <div class="modal-footer">
+		 		    	<div class="form-group">
+		 		    		<%= f.submit '登録' , class:"btn-default btn-lg btn btn-primary " %>
+		    			<% end %>
+			    		</div>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="row">
+			<table class="table">
+				<% @posts.each_with_index do |post, i| %>
+				<!-- 普通のeach文ではcollapseがeachされなかった為それぞれの数字を定義 -->
+					<tr>
+						<td>
+							<div class="post">
+								<div class="row">
+									<div class="post_user_image">
+										<div class="col-xs-2">
+											<%= attachment_image_tag post.user.icon_image, :icon_image, :fill, 40, 40, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40' %>
+										</div>
+									</div>
+									<div class="post_user_name">
+										<div class="col-xs-2">
+											<%= post.user.name %>
+										</div>
+									</div>
+								<div class="row">
+									<div class="post_image">
+										<%= attachment_image_tag post, :post_image, :fill, 300, 100, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40'  %>
+									</div>
+									<div class="post_title">
+										<h3><%= post.title %></h3>
+									</div>
+									<div class="show.post_collapse">
+										<a href="#collapse<%= i %>" data-toggle="collapse" >続きを読む</a>
+										<!-- data-toggle="collapse＝折りたたみ機能　文字のボタンにする為a hrefを使用　idを持たせる -->
+										<div id="collapse<%= i %>" class="collapse">
+											<%= post.post_body %><br>
+											<%= post.item %><br>
+											<%= post.winding %><br>
+											<%= post.size %>
+										</div>
+									</div>
+								</div>
+							</div>
+						</td>
+					<tr>
+				<% end %>
+			</table>
+		</div>
+</div>

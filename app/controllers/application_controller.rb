@@ -6,7 +6,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
 	  	when Admin
 	  		admin_styles_path
 	  	when User
-	  		root_path
+	  		new_user_post_path
   	end
   end
 
