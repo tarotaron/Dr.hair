@@ -12,7 +12,7 @@
     <div class="container">
       <div class="row">
         <header class="navbar navbar-fixed-top navbar-inverse ">
-          <nav class="container">
+          <nav>
               <% if admin_signed_in? %>
                 <span class="navbar-brand">Dr.hair</span>
                   <ul class="nav navbar-nav navbar-right">
@@ -40,7 +40,7 @@
                   <li><%= link_to "Log In", new_user_session_path %></li>
                 </ul>
               <% else %>
-                <ul class="nav navbar-nav ">
+                <ul class="nav navbar-nav navbar-right">
                   <span class="navbar-brand">Dr.hair</span>
                 </ul>
               <% end %>
