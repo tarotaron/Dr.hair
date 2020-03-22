@@ -8,7 +8,6 @@ class User < ApplicationRecord
   # has_many :favorites, dependent: :destroy
   # attachment :icon_image
 
-  # validates :name, presence:true
-  # validates :encrypted_password, presence:true
+  validates :name, presence:true
 
 end
