@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :styles, only:[:index, :create, :destroy]
   end
 
-    resources :posts
+    resources :posts, only:[:index, :create, :update, :destroy]
+    resources :users, only:[:show, :create, :update, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

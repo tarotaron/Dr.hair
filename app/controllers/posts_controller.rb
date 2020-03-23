@@ -1,18 +1,13 @@
 class PostsController < ApplicationController
-
-	def new
-		@post = Post.new
-	end
+	before_action :authenticate_user!, only: [:create, :update, :index, :update, :destroy]
+	before_action :correct_user, only: [:update, :destroy ]
 
 	def create
 		@post = Post.new(post_params)
 		@post.user_id = current_user.id
-		if @post.save
-			flash[:notice] = "create post."
-			redirect_to posts_path
-		else 
-			render 'new'
-		end
+		@post.save
+		flash[:notice] = "create post."
+		redirect_to posts_path
 	end
 
 	def index
@@ -22,18 +17,15 @@ class PostsController < ApplicationController
 
 	def update
 		@post = Post.find(params[:id])
-		if @post.update(post_params)
-			flash[:notice] = "update post."
-			redirect_to 'index'
-		else
-			render 'edit'
-		end
+		@post.update(post_params)
+		flash[:notice] = "update post."
+		redirect_to user_path(current_user)
 	end
 
 	def destroy
 		post = Post.find(params[:id])
 		post.destroy
-		redirect_to 'index'
+		redirect_to user_path(current_user)
 	end
 
 private
