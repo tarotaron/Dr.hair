@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 2020_03_19_035743) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_id", null: false
-    t.string "comment", null: false
+    t.integer "user_id"
+    t.integer "post_id"
+    t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_035743) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.string "icon_image"
+    t.string "icon_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

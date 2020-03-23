@@ -35,7 +35,7 @@
                         </div>
                       </div>
                     </form>
-                    <li class="nav-item">Logout</li>
+                    <li class="nav-item"><%= link_to "Logout", destroy_user_session_path %></li>
                   </ul>
               <% elsif request.fullpath == "/user/sign_in" %>
                 <ul class="nav navbar-nav navbar-right">
@@ -50,11 +50,15 @@
           </nav>
         </header> -->
       </div>
-    </div>
-    <div class="container">
       <div class="row">
         <main>
-          <%= yield %>
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-8">
+              <%= yield %>
+            </div>
+            <div class="col-xs-2">
+            </div>
         </main>
       </div>
     </div>
