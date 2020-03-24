@@ -22,5 +22,12 @@ private
 	def user_params
 		params.require(:user).permit(:name, :icon_image)
 	end
+
+	def correct_user
+		user = User.find(params[:id])
+		if user.id != current_user.id
+		redirect_to user_path(current_user)
+		end
+	end
 end
 

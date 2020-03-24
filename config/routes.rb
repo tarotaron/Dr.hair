@@ -18,7 +18,9 @@ Rails.application.routes.draw do
     resources :styles, only:[:index, :create, :destroy]
   end
 
-    resources :posts, only:[:index, :create, :update, :destroy]
+    resources :posts, only:[:index, :create, :update, :destroy]do
+        resource :favorites, only:[:create, :destroy]
+    end
     resources :users, only:[:show, :create, :update, :destroy]
     get "/style", to: "styles#show", as: "style"
     get "/styles", to: "styles#index", as: "styles"
