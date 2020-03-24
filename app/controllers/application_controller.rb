@@ -24,11 +24,4 @@ before_action :configure_permitted_parameters, if: :devise_controller?
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :encrypted_password])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:name, :encrypted_password])
   end
-
-  def correct_user
-      user = User.find(params[:id])
-       if user.id != current_user.id
-          redirect_to top_path
-       end
-    end
 end

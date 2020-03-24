@@ -8,10 +8,10 @@ class Admin::FormsController < ApplicationController
 		@form = Form.new(form_params)
 	    if @form.save
 	    flash[:notice] = "creatad form."
-	    redirect_to 'index'
+	    redirect_to admin_forms_path
 	    else
 	    @forms = Form.all
-	    render 'index'
+	    render admin_forms_path
 		end
 	end
 

@@ -8,10 +8,10 @@ class Admin::LengthsController < ApplicationController
 		@length = Length.new(length_params)
 	    if @length.save
 	    flash[:notice] = "creatad length."
-	    redirect_to 'index'
+	    redirect_to admin_lengths_path
 		else
 		@lengths = Length.all
-	    render 'index'
+	    render admin_lengths_path
 		end
 	end
 
