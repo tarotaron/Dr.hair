@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 	before_action :authenticate_user!, only: [:create, :update, :index, :update, :destroy]
-	before_action :correct_user, only: [:update, :destroy ]
+	before_action :post_correct_user, only: [:update, :destroy ]
 
 	def create
 		@post = Post.new(post_params)
@@ -32,6 +32,21 @@ private
 
 	def post_params
 		params.require(:post).permit(:post_image, :title, :post_body, :winding, :item, :size, :user_id)
+	end
+
+	# def correct_user
+	#     user = User.find(params[:id])
+	#     if user.id != current_user.id
+	#     redirect_to top_path
+	#     end
+ #    end
+# ↑のだとpostをupdate/destroyする際に(post)とするとpost.idのみでuser.idを定義できなくてエラーになった
+# その為↓の書き方をした params[:user_id]だけだと文字列になってしまうので.to_iで整数に
+
+	def post_correct_user
+		if params[:user_id].to_i != current_user.id
+			redirect_to top_path
+		end
 	end
 end
 

@@ -20,5 +20,8 @@ Rails.application.routes.draw do
 
     resources :posts, only:[:index, :create, :update, :destroy]
     resources :users, only:[:show, :create, :update, :destroy]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    get "/style", to: "styles#show", as: "style"
+    get "/styles", to: "styles#index", as: "styles"
+    # resourcesでstyle書いてたらshowに:idが発行されてstyleの:id指定が必要になってしまった
+    # sを外すとindexが生成されない為直書き
 end

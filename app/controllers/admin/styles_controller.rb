@@ -10,10 +10,10 @@ class Admin::StylesController < ApplicationController
 		# binding.pry
 		if @style.save
 		flash[:notice] = "created style."
-		redirect_to 'index'
+		redirect_to admin_styles_path
 	    else
 		@styles = Style.all
-	    render 'index'
+	    render admin_styles_path
 	    end
 	end
 
