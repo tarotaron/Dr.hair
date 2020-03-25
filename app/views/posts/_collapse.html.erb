@@ -9,10 +9,16 @@
 				<%= post.winding %><br>
 				<%= post.size %>
 			<div class="row">
-				<div class="comment_index">
+				<div id="comment_index">
 					<%= render 'comments/comments', post: post %>
 				</div>
 		    </div>
 		</div>
 	</div>
 </div>
+<div class="row">
+	<div class="comment_form">
+		<%= render 'comments/form' , comment: @comment, post: post %>
+	</div>
+</div>
+
