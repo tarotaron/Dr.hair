@@ -14,6 +14,7 @@ class PostsController < ApplicationController
 		@posts = Post.all
 		@post =Post.new
 		@favorite = Favorite.new
+		@comment = Comment.new
 	end
 
 	def update
