@@ -8,8 +8,9 @@ class FavoritesController < ApplicationController
 
 	def destroy
 		@favorite = current_user.favorites.find_by(post_id: @post.id)
+		#binding.pry
 		# current_userのいいねの中からpostのidが一致するもの
-		@favorite.destroy
+		@favorite.destroy!
 	end
 
 	private

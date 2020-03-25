@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 	before_action :authenticate_user!, only: [:create, :update, :index, :update, :destroy]
-	before_action :post_correct_user, only: [:update, :destroy ]
+	before_action :post_correct_user, only: [ :destroy ]
+	before_action :correct_user, only: [ :update ]
 
 	def create
 		@post = Post.new(post_params)
@@ -19,7 +20,7 @@ class PostsController < ApplicationController
 
 	def update
 		@post = Post.find(params[:id])
-		@post.update(post_params)
+		@post.update!(post_params)
 		flash[:notice] = "update post."
 		redirect_to user_path(current_user)
 	end
@@ -49,6 +50,12 @@ private
 		if params[:user_id].to_i != current_user.id
 			redirect_to top_path
 		end
+	end
+	 def correct_user
+		  post = Post.find(params[:id])
+		    if post.user_id != current_user.id
+		      redirect_to top_path
+		    end
 	end
 end
 

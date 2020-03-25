@@ -54,27 +54,27 @@
 </div>
 <div class="row">
 	<table class="table">
-		<% @posts.each_with_index do |post, i| %>
+		<% @posts.each do |post| %>
 			<tr>
 				<td>
 					<div class="post">
 						<div class="row">
 							<div class="post_image">
-								<div class="col-xs-4">
+								<div class="col-xs-10">
 									<%= attachment_image_tag post, :post_image, :fill, 300, 100, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'400x400'  %>
 								</div>
 							</div>
 							<% if post.user_id == current_user.id %>
 								<div class="post_edit_modal">
 									<div class="col-xs-2">
-										<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#postEditModal<%= i %>">
+										<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#postEditModal<%= post.id %>">
 											<span class="glyphicon glyphicon-align-justify"></span>
 										</button>
-										<div class="modal" id="postEditModal<%= i %>" role="dialog" >
+										<div class="modal" id="postEditModal<%= post.id %>" role="dialog" >
 										  <div class="modal-dialog modal-dialog-centered" >
 										    <div class="modal-content">
 										      <div class="modal-header">
-										      	<h1 class="model_title">Edit Post</h1>
+										      	<h1 class="modal_title">Edit Post</h1>
 										        <button type="button" class="close" data-dismiss="modal" >
 										          <span class="glyphicon glyphicon-remove" ></span>
 										        </button>
@@ -133,7 +133,9 @@
 						</div>
 						<div class="row">
 							<div class="col-xs-1">
-								<%= render 'favorites/favorite', post: post %>
+								<div id="favorite_btn-<%= post.id %>">
+									<%= render 'favorites/favorite', post: post %>
+								</div>
 							</div>
 							<div class="col-xs-1">
 								<div class="comment_icon" >
@@ -145,13 +147,6 @@
 						<div class="post_collapse">
 							<%= render 'posts/collapse', post: post %>
 						</div>
-						<% if post.user_id != current_user.id %>
-							<div class="row">
-								<div class="comment_form">
-									<%= render 'comments/form', post: post, comment: @comments %>
-								</div>
-							</div>
-						<% end %>
 					</div>
 				</td>
 			</tr>
