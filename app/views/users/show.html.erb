@@ -1,18 +1,17 @@
-<%= flash[:notice] %>
-<div class="container">
-	<div class="row">
-		<div class="mrdia">
-			<div class="media-left">
-				<%= attachment_image_tag @user, :icon_image, :fill, 40, 40, format: 'jpeg', fallback: "20161008_noimage 2 2.png",size:'40x40' %>
-			</div>
-			<div class="media-body">
-				<div class="row">
-					<div class="col-md-2">
-						<h3 class="media_name">
-							<%= @user.name %>
-						</h3>
-					</div>
-					<div class="col-md-2">
+<div class="row">
+	<div class="mrdia">
+		<div class="media-left">
+			<%= attachment_image_tag @user, :icon_image, :fill, 40, 40, format: 'jpeg', fallback: "20161008_noimage 2 2.png",size:'40x40' %>
+		</div>
+		<div class="media-body">
+			<div class="row">
+				<div class="col-xs-2 ">
+					<h3 class="media_name">
+						<%= @user.name %>
+					</h3>
+				</div>
+				<div class="col-xs-2 ">
+					<% if @user.id == current_user.id %>
 						<div class="user_edit_modal">
 							<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#userEditModal">
 								<span class="glyphicon glyphicon-cog"></span>
@@ -47,23 +46,25 @@
 							  </div>
 							</div>
 						</div>
-					</div>
+					<% end %>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<table class="table">
-			<% @posts.each_with_index do |post, i| %>
-				<tr>
-					<td>
-						<div class="post">
-							<div class="row">
-								<div class="post_image">
-									<div class="col-xs-4">
-										<%= attachment_image_tag post, :post_image, :fill, 300, 100, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40'  %>
-									</div>
+</div>
+<div class="row">
+	<table class="table">
+		<% @posts.each_with_index do |post, i| %>
+			<tr>
+				<td>
+					<div class="post">
+						<div class="row">
+							<div class="post_image">
+								<div class="col-xs-4">
+									<%= attachment_image_tag post, :post_image, :fill, 300, 100, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'400x400'  %>
 								</div>
+							</div>
+							<% if post.user_id == current_user.id %>
 								<div class="post_edit_modal">
 									<div class="col-xs-2">
 										<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#postEditModal<%= i %>">
@@ -128,23 +129,32 @@
 										</div>
 									</div>
 								</div>
+							<% end %>
+						</div>
+						<div class="row">
+							<div class="col-xs-1">
+								<%= render 'favorites/favorite', post: post %>
 							</div>
-							<div class="row">
-								<div class="show.post_collapse">
-									<a href="#collapse<%= i %>" data-toggle="collapse" >続きを読む</a>
-									<div id="collapse<%= i %>" class="collapse">
-										<h3><%= post.title %></h3><br>
-										<%= post.post_body %><br>
-										<%= post.item %><br>
-										<%= post.winding %><br>
-										<%= post.size %>
-									</div>
+							<div class="col-xs-1">
+								<div class="comment_icon" >
+									<laval for="comment_comment"><i class="far fa-comment fa-2x"></i>
+									</laval>
 								</div>
 							</div>
 						</div>
-					</td>
-				</tr>
-			<% end %>
-		</table>
-	</div>
+						<div class="post_collapse">
+							<%= render 'posts/collapse', post: post %>
+						</div>
+						<% if post.user_id != current_user.id %>
+							<div class="row">
+								<div class="comment_form">
+									<%= render 'comments/form', post: post, comment: @comments %>
+								</div>
+							</div>
+						<% end %>
+					</div>
+				</td>
+			</tr>
+		<% end %>
+	</table>
 </div>

@@ -1,13 +1,11 @@
-<div class="container">
-	<div class="row">
-		<h1>Personal Style</h1>
+<div class="row">
+	<h1>Personal Style</h1>
+</div>
+	<div class="col-xs-4">
+		<%= attachment_image_tag @style, :style_image, :fill, 200, 200, fallback: "20161008_noimage 2 2.png", size:'200x200' %>
 	</div>
-		<div class="col-xs-4">
-			<%= attachment_image_tag @style, :style_image, :fill, 200, 200, fallback: "20161008_noimage 2 2.png", size:'200x200' %>
-		</div>
-		<div class="col-xs-4">
-			<%= @style.style_body %><br>
-			<%= @style.style_name %>
-		</div>
+	<div class="col-xs-4">
+		<%= @style.style_body %><br>
+		<%= @style.style_name %>
 	</div>
 </div>
