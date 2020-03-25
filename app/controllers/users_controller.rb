@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!, only: [:show,:update]
-	before_action :correct_user, only: [:show,:update]
+	before_action :correct_user, only: [:update]
 
 	def show
 		@user = User.find(params[:id])
