@@ -1,0 +1,14 @@
+<ul style="list-style:none;">
+    <% post.comments.each do |comment| %>
+        <li class="comment">
+        	<div class="col-xs-2">
+            	<%= attachment_image_tag comment.user.icon_image, :icon_image, :fill, 40, 40, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40' %>
+            </div>
+            <div class="col-xs-10">
+            	<%= comment.user.name %>
+            	<%= comment.comment %><br>
+            	<%= comment.created_at.strftime('%Y/%m/%d') %>
+            </div>
+        </li>
+    <% end %>
+</ul>
