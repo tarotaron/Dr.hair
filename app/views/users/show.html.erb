@@ -29,7 +29,8 @@
 							      	<%= form_for @user do |f| %>
 							 		<div class="row">
 						 		    	<div class="form-group">
-						 		    		<%= f.text_field :name %>
+						 		    		<%= f.label "ニックネーム" %>
+						 		    		<%= f.text_field :name , rows:'1', class: "form-control"%>
 						 		    	</div>
 										<div class="form-group">
 							                <%= f.attachment_field :icon_image %>
@@ -61,7 +62,7 @@
 						<div class="row">
 							<div class="post_image">
 								<div class="col-xs-10">
-									<%= attachment_image_tag post, :post_image, :fill, 300, 100, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'400x400'  %>
+									<%= attachment_image_tag post, :post_image, :fill, 614, 614, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'400x400'  %>
 								</div>
 							</div>
 							<% if post.user_id == current_user.id %>
@@ -83,30 +84,25 @@
 										      	<%= form_for post do |f| %>
 										 		<div class="row">
 									 		    	<div class="form-group">
-									 		    		<%= f.text_field :title %>
+									 		    		<%= f.label "タイトル(必須)" %>
+									 		    		<%= f.text_field :title , rows:'1', class: "form-control" %>
 									 		    	</div>
 									 		    	<div class="form-group">
-									 		    		<%= f.text_area :post_body %>
+									 		    		<%= f.label "コメント(必須)" %>
+									 		    		<%= f.text_area :post_body, rows:'2', class: "form-control" %>
 									 		    	</div>
-										 		</div>
-										 		<div class="row">
-										 			<div class="col-xs-2">
-										 		    	<div class="form-group">
-										 		    		<%= f.text_field :winding %>
-										 		    	</div>
-										 		    </div>
-										 		    <div class="col-xs-2">
-										 		    	<div class="form-group">
-										 		    		<%= f.text_field :item %>
-										 		    	</div>
-										 		    </div>
-										 		    <div class="col-xs-2">
-										 		    	<div class="form-group">
-										 		    		<%= f.text_field :size %>
-										 		    	</div>
-										 		    </div>
-										 		</div>
-										        <div class="row">
+									 		    	<div class="form-group">
+									 		    		<%= f.label "巻き方" %>
+									 		    		<%= f.text_field :winding , rows:'1', class: "form-control"%>
+									 		    	</div>
+									 		    	<div class="form-group">
+									 		    		<%= f.label "セットに使ったアイテム" %>
+									 		    		<%= f.text_field :item , rows:'1', class: "form-control" %>
+									 		    	</div>
+									 		    	<div class="form-group">
+									 		    		<%= f.label "コテのmm数" %>
+									 		    		<%= f.text_field :size , rows:'1', class: "form-control" %>
+									 		    	</div>
 													<div class="form-group">
 										                <%= f.attachment_field :post_image %>
 									 		    	</div>
