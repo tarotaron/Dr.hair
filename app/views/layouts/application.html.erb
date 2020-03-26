@@ -13,32 +13,97 @@
     <div class="container">
       <div class="row">
         <header>
-          <nav class="navbar navbar-fixed-top navbar-inverse ">
-            <div class="container-fluid">
-              <% if admin_signed_in? %>
-                <span class="navbar-brand">Dr.hair</span>
-                  <ul class="nav navbar-nav navbar-right">
-                      <li class="nav-item"><%= link_to "Form", admin_forms_path %></li>
-                      <li class="nav-item"><%= link_to "Length", admin_lengths_path %></li>
-                      <li class="nav-item"><%= link_to "Style", admin_styles_path %></li>
-                      <li class="nav-item"><%= link_to "Logout", destroy_admin_session_path, method: :delete %></li>
-                  </ul>
-              <% elsif user_signed_in? %>
-                <span class="navbar-brand navbar_center">Dr.hair</span>
-                  <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item"><%= link_to "Logout", destroy_user_session_path , method: :delete %></li>
-                  </ul>
-              <% elsif request.fullpath == "/user/sign_in" %>
-                <ul class="nav navbar-nav navbar-right">
-                  <li><%= link_to "Log In", new_user_session_path %></li>
-                </ul>
-              <% else %>
-                <ul class="nav navbar-nav navbar-right">
-                  <span class="navbar-brand">Dr.hair</span>
-                </ul>
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="navbar navbar-fixed-top">
+                  <span>Knowledge is power.</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <nav class="navbar navbar-fixed-top navbar-inverse", id="nav1">
+                <h1 class="navbar-brand">Dr.hair</h1>
+                  <div class="nav">
+                    <ul class="nav navbar-nav navbar-right">
+                      <% if admin_signed_in? %>
+                            <li class="nav-item">
+                              <%= link_to "Form", admin_forms_path %>
+                            </li>
+                            <li class="nav-item">
+                              <%= link_to "Length", admin_lengths_path %>
+                            </li>
+                            <li class="nav-item">
+                              <%= link_to "Style", admin_styles_path %>
+                            </li>
+                            <li class="nav-item">
+                              <%= link_to "Logout", destroy_admin_session_path, method: :delete %>
+                            </li>
+                      <% elsif user_signed_in? %>
+                            <li class="nav-item"><%= link_to "Logout", destroy_user_session_path , method: :delete %></li>
+                      <% elsif request.fullpath == "/user/sign_in" %>
+                            <li class="nav-item">
+                              <%= link_to "Log In", new_user_session_path %>
+                            </li>
+                      <% else %>
+                      <% end %>
+                    </ul>
+                  </div>
+              </nav>
+            </div>
+            <div class="row">
+              <% if user_signed_in? %>
+                <nav class="navbar ", id="nav2">
+                  <div class="nav">
+                      <ul class="nav navbar-nav ">
+                         <li class="">
+                          <%= link_to 'TOP' %>
+                        </li>
+                        <li class="">
+                          <%= link_to 'POST', posts_path %>
+                        </li>
+                         <li class="">
+                          <%= link_to 'HAIR SEARTH', styles_path %>
+                        </li>
+                        <li class="">
+                          <%= link_to "MY PAGE", user_path(current_user.id) %>
+                        </li>
+                        <li class="">
+                          <div class="search_modal">
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#searchModal">
+                              <i class="fas fa-search"></i>
+                            </button>
+                            <div class="modal" id="searchModal" role="dialog" >
+                              <div class="modal-dialog modal-dialog-centered" >
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title">SEARCH</h1>
+                                    <button type="button" class="close" data-dismiss="modal" >
+                                      <span class="glyphicon glyphicon-remove" ></span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <%= form_with(url: search_path, method: :get, local: true) do |f| %>
+                                      <div class="form-group">
+                                        <%= f.text_field 'content' %>
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <div class="form-group">
+                                      <%= f.submit 'Uarch' , class:"btn-default btn-lg btn btn-primary " %>
+                                    </div>
+                                    <% end %>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </li>
+                      </ul>
+                  </div>
+                </nav>
               <% end %>
             </div>
-          </nav>
+          </div>
         </header>
       </div>
         <main>
