@@ -6,7 +6,7 @@ class Admin::FormsController < ApplicationController
 
 	def create
 		@form = Form.new(form_params)
-	    if @form.save
+	    if @form.save!
 	    flash[:notice] = "creatad form."
 	    redirect_to admin_forms_path
 	    else

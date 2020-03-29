@@ -1,20 +1,11 @@
 <div class="row">
-	<div class="col-xs-8">
-		<h1>POST</h1>
-	</div>
-	<div class="col-xs-4">
-		<div class="new_post">
-			<%= render 'posts/new', post: @post %>
-		</div>
+	<div class="col-xs-12">
+		<h1>Search Post</h1>
 	</div>
 </div>
 <div class="row">
 	<table class="table">
 		<% @posts.each do |post| %>
-		<%# @posts.each_with_index do |post, i| %>
-		<!-- 普通のeach文ではcollapseがeachされなかった為それぞれの数字を定義してiを持たせたけどpost.idは一個しかないからpost.idで良かった -->
-		<!-- <a href="#collapse<%#= i %>" data-toggle="collapse" >続きを読む</a>
-		<div id="collapse<%#= i %>" class="collapse"> -->
 			<tr>
 				<td>
 					<div class="post">
@@ -34,7 +25,7 @@
 						</div>
 						<div class="row">
 							<div class="post_image">
-								<%= attachment_image_tag post, :post_image, :fill, 614, 614, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'600x600'  %>
+								<%= attachment_image_tag post, :post_image, :fill, 200, 200, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'600x600'  %>
 							</div>
 							<div class="col-xs-1">
 								<div id="favorite_btn-<%= post.id %>">
