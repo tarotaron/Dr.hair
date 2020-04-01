@@ -28,4 +28,6 @@ Rails.application.routes.draw do
     get "/styles", to: "styles#index", as: "styles"
     # resourcesでstyle書いてたらshowに:idが発行されてstyleの:id指定が必要になってしまった
     # sを外すとindexが生成されない為直書き
+    root 'homes#top'
+    get "home/about" => "homes#about"
 end
