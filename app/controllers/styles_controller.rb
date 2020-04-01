@@ -1,5 +1,6 @@
 class StylesController < ApplicationController
-
+	before_action :authenticate_user!
+	
 	def show
 		@style =Style.find_by(form_id: params[:form_id],length_id: params[:length_id])
 								# ↑ 外部キー        ↑form_tagで指定した名前
