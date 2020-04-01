@@ -16,12 +16,79 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-#nav1 {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.naver {
+	width: 1300px;
+	margin-top: 30px;
+	border-color: #222;
+}
+
+.wrapper {
+	margin-top: 100px;
+	padding: 0,100px;
+}
+
+html {
+	width: 1400px; 
+	// background-color: #222;
+}
+
+.container {
+	width: 1400px;
+	background-color: white;
+	margin: 20px;
+}
+
+#logo {
+	color: white;
+	text-align: right;
+	font-size: 50px;
+}
+
+.nav-item {
+	color: white;
+	font-size: 25px;
 	margin-top: 30px;
 }
-#nav2 {
-	margin-top: 120px;
+
+#about_modal {
+	width: 400px;
+	height: 600px;
+	margin-left: 600px;
+	margin-top: 200px;
 }
-.wrapper {
-	margin-top: 140px;
+
+body {
+	background-color: #222;
 }
+
+#left_ber{
+	padding-top: 350px;
+	// height: 1000px;
+	// background-color: #222;
+
+}
+
+#right_ber{
+	padding-top: 400px;
+	// float:right;
+ //    display: inline-block;
+	// height: 1000px;
+	// background-color: #222;
+}
+
+
+/*
+.top2 {
+  background-size: cover;
+  background-position: center;
+  background-image: image-url('IMG_77962.JPG');
+  width: 500px;
+  height: 700px;
+}
+*/

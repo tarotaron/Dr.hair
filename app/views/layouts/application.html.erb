@@ -11,117 +11,149 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
+      <% if admin_signed_in? %>
         <header>
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="navbar navbar-fixed-top">
-                  <span>Knowledge is power.</span>
+          <div class="row">
+            <nav class="navbar navbar-fixed-top navbar-inverse">
+              <h1 class="col-xs-6" id="logo">Dr.hair</h1>
+              <div class="col-xs-6">
+                <div class="nav">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item">
+                      <%= link_to "Form", admin_forms_path %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "Length", admin_lengths_path %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "Style", admin_styles_path %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "Logout", destroy_admin_session_path, method: :delete %>
+                    </li>
+                  </ul>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <nav class="navbar navbar-fixed-top navbar-inverse", id="nav1">
-                <h1 class="navbar-brand">Dr.hair</h1>
-                  <div class="nav">
-                    <ul class="nav navbar-nav navbar-right">
-                      <% if admin_signed_in? %>
-                            <li class="nav-item">
-                              <%= link_to "Form", admin_forms_path %>
-                            </li>
-                            <li class="nav-item">
-                              <%= link_to "Length", admin_lengths_path %>
-                            </li>
-                            <li class="nav-item">
-                              <%= link_to "Style", admin_styles_path %>
-                            </li>
-                            <li class="nav-item">
-                              <%= link_to "Logout", destroy_admin_session_path, method: :delete %>
-                            </li>
-                      <% elsif user_signed_in? %>
-                            <li class="nav-item"><%= link_to "Logout", destroy_user_session_path , method: :delete %></li>
-                      <% elsif request.fullpath == "/user/sign_in" %>
-                            <li class="nav-item">
-                              <%= link_to "Log In", new_user_session_path %>
-                            </li>
-                      <% else %>
-                      <% end %>
-                    </ul>
-                  </div>
-              </nav>
-            </div>
-            <div class="row">
-              <% if user_signed_in? %>
-                <nav class="navbar ", id="nav2">
-                  <div class="nav">
-                      <ul class="nav navbar-nav ">
-                         <li class="">
-                          <%= link_to 'TOP' %>
-                        </li>
-                        <li class="">
-                          <%= link_to 'POST', posts_path %>
-                        </li>
-                         <li class="">
-                          <%= link_to 'HAIR SEARTH', styles_path %>
-                        </li>
-                        <li class="">
-                          <%= link_to "MY PAGE", user_path(current_user.id) %>
-                        </li>
-                        <li class="">
-                          <div class="search_modal">
-                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#searchModal">
-                              <i class="fas fa-search"></i>
+            </nav>
+          </div>
+        </header>
+        <main>
+          <div class="wrapper">
+            <%= yield %>
+          </div>
+        </main>
+      <% elsif user_signed_in? %>
+        <header>
+          <div class="row">
+            <nav class="navbar navbar-fixed-top navbar-inverse">
+              <h1 class="col-xs-6" id="logo">Dr.hair</h1>
+              <div class="col-xs-6">
+                <div class="nav">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item"><%= link_to "Logout", destroy_user_session_path , method: :delete %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </header>
+        <main>
+          <div class="row" id="mein">
+            <% unless controller_name == "homes" %>
+              <div class="col-xs-1" id="left_ber">
+                <div class=row>
+                  <%= link_to 'TOP', root_path %>
+                </div>
+                <div class=row>
+                  <%= link_to 'POST', posts_path %>
+                </div>
+                <div class=row>
+                  <%= link_to 'HAIR SEARTH', styles_path %>
+                </div>
+                <div class=row>
+                  <%= link_to "MY PAGE", user_path(current_user.id) %>
+                </div>
+              </div>
+              <div class="col-xs-10">
+                <div class="wrapper">
+                  <%= flash[:notice] %>
+                  <%= yield %>
+                </div>
+              </div>
+              <div class="col-xs-1" id="right_ber">
+                <div class=row>
+                  <div class="search_modal">
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#searchModal">
+                      <i class="fas fa-search"></i>
+                    </button>
+                    <div class="modal" id="searchModal" role="dialog" >
+                      <div class="modal-dialog modal-dialog-centered" >
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title">SEARCH</h1>
+                            <button type="button" class="close" data-dismiss="modal" >
+                              <span class="glyphicon glyphicon-remove" ></span>
                             </button>
-                            <div class="modal" id="searchModal" role="dialog" >
-                              <div class="modal-dialog modal-dialog-centered" >
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h1 class="modal-title">SEARCH</h1>
-                                    <button type="button" class="close" data-dismiss="modal" >
-                                      <span class="glyphicon glyphicon-remove" ></span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <%= form_tag(search_path, method: :get) do %>
-                                      <div class="form-group">
-                                        <%= label_tag "キーワード" %>
-                                        <%= text_field_tag :search %>
-                                      </div>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <div class="form-group">
-                                      <%= submit_tag 'Search' ,:name => nil, class:"btn-default btn-lg btn btn-primary " %>
-                                    </div>
-                                    <% end %>
-                                  </div>
-                                </div>
+                          </div>
+                          <div class="modal-body">
+                            <%= form_tag(search_path, method: :get) do %>
+                              <div class="form-group">
+                                <%= label_tag "キーワード" %>
+                                <%= text_field_tag :search %>
                               </div>
+                          </div>
+                          <div class="modal-footer">
+                            <div class="form-group">
+                              <%= submit_tag 'Search' ,:name => nil, class:"btn-default btn-lg btn btn-primary " %>
                             </div>
-                        </li>
-                      </ul>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </nav>
+                  <% unless controller_name == "styles" %>
+                    <div class="row">
+                      <%= render 'posts/new', post: @post %>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+              <% if controller_name == "homes" %>
+                <div class="wrapper">
+                  <%= yield %>
+                </div>
               <% end %>
             </div>
           </div>
-        </header>
-      </div>
-        <main>
+        </main>
+      <% else %>
+        <header>
           <div class="row">
-            <div class="col-xs-2">
-            </div>
-            <div class="col-xs-8">
-              <div class="wrapper">
-                <%= flash[:notice] %>
-                <%= yield %>
+            <nav class="navbar navbar-fixed-top navbar-inverse">
+              <h1 class="col-xs-6" id="logo">Dr.hair</h1>
+              <div class="col-xs-6">
+                <div class="nav">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item">
+                      <%= link_to "Log In", new_user_session_path %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "Sign Up", new_user_registration_path %>
+                    </li>
+                  </ul>
+                </div >
               </div>
-            </div>
-            <div class="col-xs-2">
-            </div>
+            </nav>
+          </div>
+        </header>
+        <main>
+          <div class="wrapper">
+            <%= yield %>
           </div>
         </main>
-      </div>
+      <% end %>
     </div>
   </body>
 </html>
