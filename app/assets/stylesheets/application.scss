@@ -29,8 +29,15 @@
 }
 
 .wrapper {
-	margin-top: 100px;
-	padding: 0,100px;
+	margin-left: 200px;
+	text-align: center;
+	padding: 100px 100px 0px 100px;
+}
+
+.top_wrapper {
+	height: 740px;
+	margin-top: 80px;
+	margin-bottom: 30px;
 }
 
 html {
@@ -67,19 +74,71 @@ body {
 	background-color: #222;
 }
 
-#left_ber{
-	padding-top: 350px;
-	// height: 1000px;
-	// background-color: #222;
-
+#left_ber {
+	padding: 15px;
+	height: 900px;
+    position: relative;
+    margin-top: 65px;
+    background-color: #222;
+	position: fixed; 
 }
 
-#right_ber{
-	padding-top: 400px;
-	// float:right;
- //    display: inline-block;
-	// height: 1000px;
-	// background-color: #222;
+#left_ber div {
+	margin: 100px 0;
+    text-decoration: none;
+    background: #BBBBBB;
+	color: #BBBBBB;
+	width: 60px;
+	height: 60px;
+	font-size: 18px;
+	line-height: 60px;
+	// 行の高さ
+	border-radius: 50%;
+	// 角の丸み 50%で丸
+	text-align: center;
+	overflow: hidden;
+	// 治らなかった部分 hidden=非表示
+	font-weight: bold;
+	// 文字の太さ bold=一般的太字
+	box-shadow: 0px 2px 2px black;
+	// 影 横移動、縦移動、ぼかしレベル、色
+	text-shadow: -1px -1px white, 2px 2px black;
+	border-bottom: solid 3px gray;
+	// 内側の影
+	transition: .4s;
+	// sは秒数 アクションが起きてから変化する速さ
+}
+
+#right_ber {
+	padding: 50px;
+	height: 900px;
+    position: relative;
+    margin-top: 65px;
+    background-color: #222;
+    position: fixed; 
+    right: 0px;
+}
+
+#right_ber div {
+	margin: 100px 0;
+}
+
+button.button1 {
+	text-decoration: none;
+    background: #BBBBBB;
+	color: #BBBBBB;
+	width: 70px;
+	height: 70px;
+	font-size: 40px;
+	line-height: 70px;
+	border-radius: 50%;
+	text-align: center;
+	overflow: hidden;
+	font-weight: bolder;
+	box-shadow: 0px 2px 2px black;
+	text-shadow: -1px -1px white, 2px 2px black;
+	border-bottom: solid 3px gray;
+	transition: .4s;
 }
 
 
