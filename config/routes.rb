@@ -30,4 +30,5 @@ Rails.application.routes.draw do
     # sを外すとindexが生成されない為直書き
     root 'homes#top'
     get "home/about" => "homes#about"
+
 end
