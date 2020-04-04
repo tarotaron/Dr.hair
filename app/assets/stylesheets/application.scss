@@ -26,12 +26,13 @@
 	width: 1300px;
 	margin-top: 30px;
 	border-color: #222;
+	z-index: 2;
 }
 
-.wrapper {
-	margin-left: 200px;
-	text-align: center;
-	padding: 100px 100px 0px 100px;
+#wrapper {
+	margin-left: 20px;
+	display: inline-block;
+	padding: 130px 50px 0px 50px;
 }
 
 .top_wrapper {
@@ -80,7 +81,8 @@ body {
     position: relative;
     margin-top: 65px;
     background-color: #222;
-	position: fixed; 
+	position: fixed;
+	margin-left: -20px;
 }
 
 #left_ber div {
@@ -110,17 +112,11 @@ body {
 }
 
 #right_ber {
-	padding: 50px;
+	padding-right: 50px;
 	height: 900px;
-    position: relative;
-    margin-top: 65px;
-    background-color: #222;
-    position: fixed; 
+    margin-top: 300px;
+    position: fixed;
     right: 0px;
-}
-
-#right_ber div {
-	margin: 100px 0;
 }
 
 button.button1 {
@@ -141,7 +137,85 @@ button.button1 {
 	transition: .4s;
 }
 
+#search_modal {
+	z-index: 2;
+	margin-left: 400px;
 
+}
+
+#new_modal {
+	// position: static;
+	z-index: 2;
+	margin-left: 300px;
+}
+
+#user_image {
+	padding: 2px;
+	border:2px solid #CC0000;
+}
+
+#comment_user_image {
+	padding: 2px;
+	border:1px solid gray;
+}
+
+#second_navber {
+	margin: 60px;
+	z-index: 1;
+	background-color: white;
+}
+
+.navbar-nav{
+	margin: 0 auto;
+	display: table;
+	float:none;
+}
+
+#post_image:hover {
+	position: relative;
+	filter: grayscale(60%);
+	// 文字を目立ちやすくグレーのフィルターをかける
+}
+
+#post_image:hover p {
+	position: absolute;
+	color: white;
+	font-size: 30px;
+	top: 50%;
+	left: 40%;
+	-ms-transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	margin:0;
+	padding:0;
+	display: block;
+}
+
+#post_image:hover i {
+	position: absolute;
+	color: white;
+	font-size: 30px;
+	top: 50%;
+	left: 60%;
+	-ms-transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	margin:0;
+	padding:0;
+	display: block;
+}
+
+#post_image p {
+	display: none;
+}
+
+#post_image i {
+	display: none;
+}
+
+.btn {
+	 border-radius:25px;
+}
 /*
 .top2 {
   background-size: cover;
