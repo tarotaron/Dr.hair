@@ -1,19 +1,19 @@
 <div class="row">
-	<div class="mrdia">
-		<div class="media-left">
-			<%= attachment_image_tag @user, :icon_image, :fill, 40, 40, format: 'jpeg', fallback: "20161008_noimage 2 2.png",size:'40x40' %>
+	<div class="media">
+		<div class="col-xs-3">
+			<%= attachment_image_tag @user, :icon_image, :fill, 100, 100, format: 'jpeg', fallback: "20161008_noimage 2 2.png",size:'100x100',class:"img-circle"%>
 		</div>
-		<div class="media-body">
-			<div class="row">
-				<div class="col-xs-2 ">
+		<div class="col-xs-9">
+			<div class="row" id="media_body">
+				<div class="col-xs-7 ">
 					<h3 class="media_name">
 						<%= @user.name %>
 					</h3>
 				</div>
-				<div class="col-xs-2 ">
+				<div class="col-xs-5 ">
 					<% if @user.id == current_user.id %>
 						<div class="user_edit_modal">
-							<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#userEditModal">
+							<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#userEditModal" data-backdrop="false">
 								<span class="glyphicon glyphicon-cog"></span>
 							</button>
 							<div class="modal" id="userEditModal" role="dialog" >
@@ -55,97 +55,140 @@
 </div>
 <div class="row">
 	<table class="table">
-		<% @posts.each do |post| %>
+		<thead>
 			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+			<% @posts.each do |post| %>
 				<td>
 					<div class="post">
 						<div class="row">
 							<div class="post_image">
-								<div class="col-xs-10">
-									<%= attachment_image_tag post, :post_image, :fill, 614, 614, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'400x400'  %>
-								</div>
-							</div>
-							<% if post.user_id == current_user.id %>
-								<div class="post_edit_modal">
-									<div class="col-xs-2">
-										<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#postEditModal<%= post.id %>">
-											<span class="glyphicon glyphicon-align-justify"></span>
-										</button>
-										<div class="modal" id="postEditModal<%= post.id %>" role="dialog" >
-										  <div class="modal-dialog modal-dialog-centered" >
-										    <div class="modal-content">
-										      <div class="modal-header">
-										      	<h1 class="modal_title">Edit Post</h1>
-										        <button type="button" class="close" data-dismiss="modal" >
-										          <span class="glyphicon glyphicon-remove" ></span>
-										        </button>
-										      </div>
-										      <div class="modal-body">
-										      	<%= form_for post do |f| %>
-										 		<div class="row">
-									 		    	<div class="form-group">
-									 		    		<%= f.label "タイトル(必須)" %>
-									 		    		<%= f.text_field :title , rows:'1', class: "form-control" %>
-									 		    	</div>
-									 		    	<div class="form-group">
-									 		    		<%= f.label "コメント(必須)" %>
-									 		    		<%= f.text_area :post_body, rows:'2', class: "form-control" %>
-									 		    	</div>
-									 		    	<div class="form-group">
-									 		    		<%= f.label "巻き方" %>
-									 		    		<%= f.text_field :winding , rows:'1', class: "form-control"%>
-									 		    	</div>
-									 		    	<div class="form-group">
-									 		    		<%= f.label "セットに使ったアイテム" %>
-									 		    		<%= f.text_field :item , rows:'1', class: "form-control" %>
-									 		    	</div>
-									 		    	<div class="form-group">
-									 		    		<%= f.label "コテのmm数" %>
-									 		    		<%= f.text_field :size , rows:'1', class: "form-control" %>
-									 		    	</div>
-													<div class="form-group">
-										                <%= f.attachment_field :post_image %>
-									 		    	</div>
-									 		    </div>
-									 	  	  </div>
-										  	  <div class="modal-footer">
-										    		<div class="form-group">
-										    			<div class="col-xs-2">
-										    				<%= f.submit 'Update' , class:"btn-default btn-lg btn btn-primary " %>
-										    			</div>
-										    			<div class="col-xs-2">
-										    				 <%= link_to "Destroy", post_path(post, user_id: @user.id), method: :delete, data: { confirm: '削除しますか？' }, class:"btn-default btn-lg btn btn-primary " %>
-										    				 <!-- pathの中の受け渡しにuser_idも書く事でbefore actionが実行できた -->
-									      	  			</div>
-											  		</div>
-												<% end %>
-										      </div>
-										    </div>
-										  </div>
+								<div class="col-xs-10" >
+									<button type="button" data-toggle="modal" data-target="#postEditModal<%= post.id %>" data-backdrop="false" id="post_image">
+										<%= attachment_image_tag post, :post_image, :fill, 614, 614, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'300x300',id:"post_image" %>
+										<p>♡<%= post.favorites.count %></p>
+										<i class="far fa-comment fa-2x"><%= post.comments.count %></i>
+									</button>
+									<div class="modal" id="postEditModal<%= post.id %>" role="dialog" >
+										<div class="modal-dialog modal-dialog-centered" >
+											<div class="modal-content">
+											    <div class="modal-header">
+												    <button type="button" class="close" data-dismiss="modal" >
+												      <span class="glyphicon glyphicon-remove" ></span>
+												    </button>
+											    </div>
+											    <div class="modal-body">
+													<div class="post">
+														<div class="row">
+															<div class="post_image">
+																<div class="col-xs-10" >
+																	<%= attachment_image_tag post, :post_image, :fill, 614, 614, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'400x400' %>
+																</div>
+																<div class="col-xs-2">
+																	<% if post.user_id == current_user.id %>
+																		<div class="post_edit_modal">
+																			<button type="button" class="btn  btn-sm" data-toggle="modal" data-target="#postEditModal<%= post.id %>" data-backdrop="false">
+																				<span class="glyphicon glyphicon-align-justify"></span>
+																			</button>
+																			<div class="modal" id="postEditModal<%= post.id %>" role="dialog" >
+																			    <div class="modal-dialog modal-dialog-centered" >
+																			   		<div class="modal-content">
+																			      		<div class="modal-header">
+																			      			<h1 class="modal_title">Edit Post</h1>
+																			        			<button type="button" class="close" data-dismiss="modal" >
+																			          				<span class="glyphicon glyphicon-remove" ></span>
+																			        			</button>
+																			      		</div>
+																		      			<%= form_for post do |f| %>
+																		       			<div class="modal-body">
+																					 		<div class="row">
+																				 		    	<div class="form-group">
+																				 		    		<%= f.label "タイトル(必須)" %>
+																				 		    		<%= f.text_field :title , rows:'1', class: "form-control" %>
+																				 		    	</div>
+																				 		    	<div class="form-group">
+																				 		    		<%= f.label "コメント(必須)" %>
+																				 		    		<%= f.text_area :post_body, rows:'2', class: "form-control" %>
+																				 		    	</div>
+																				 		    	<div class="form-group">
+																				 		    		<%= f.label "巻き方" %>
+																				 		    		<%= f.text_field :winding , rows:'1', class: "form-control"%>
+																				 		    	</div>
+																				 		    	<div class="form-group">
+																				 		    		<%= f.label "セットに使ったアイテム" %>
+																				 		    		<%= f.text_field :item , rows:'1', class: "form-control" %>
+																				 		    	</div>
+																				 		    	<div class="form-group">
+																				 		    		<%= f.label "コテのmm数" %>
+																				 		    		<%= f.text_field :size , rows:'1', class: "form-control" %>
+																				 		    	</div>
+																								<div class="form-group">
+																					                <%= f.attachment_field :post_image %>
+																				 		    	</div>
+																				 		    </div>
+																	 	  	   			</div>
+																				  	    <div class="modal-footer">
+																				    		<div class="form-group">
+																				    			<div class="col-xs-2">
+																				    				<%= f.submit 'Update' , class:"btn-default btn-lg btn btn-primary " %>
+																				    			</div>
+																				    			<div class="col-xs-2">
+																				    				 <%= link_to "Destroy", post_path(post, user_id: @user.id), method: :delete, data: { confirm: '削除しますか？' }, class:"btn-default btn-lg btn btn-primary " %>
+																				    				 <!-- pathの中の受け渡しにuser_idも書く事でbefore actionが実行できた -->
+																			      	  			</div>
+																					  		</div>
+																					    </div>
+																						<% end %>
+																					</div>
+																	      		</div>
+																	    	</div>
+																		</div>
+																	<% end %>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-xs-1">
+																<div id="favorite_btn-<%= post.id %>">
+																	<%= render 'favorites/favorite', post: post %>
+																</div>
+															</div>
+															<div class="col-xs-1">
+																<div class="comment_icon" >
+																	<laval for="comment_comment"><i class="far fa-comment fa-2x"></i>
+																	</laval>
+																</div>
+															</div>
+														</div>
+														<div class="post_collapse">
+															<%= render 'posts/collapse', post: post %>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="modal fade" id="image-modal">
+										<div class="modal-dialog">
+											<div class="modal-body">
+												<%= attachment_image_tag post, :post_image, :fill, 614, 614, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'400x400' %>
+											</div>
 										</div>
 									</div>
 								</div>
-							<% end %>
-						</div>
-						<div class="row">
-							<div class="col-xs-1">
-								<div id="favorite_btn-<%= post.id %>">
-									<%= render 'favorites/favorite', post: post %>
-								</div>
 							</div>
-							<div class="col-xs-1">
-								<div class="comment_icon" >
-									<laval for="comment_comment"><i class="far fa-comment fa-2x"></i>
-									</laval>
-								</div>
-							</div>
-						</div>
-						<div class="post_collapse">
-							<%= render 'posts/collapse', post: post %>
 						</div>
 					</div>
-				</td>
+				<td>
+			<% end %>
 			</tr>
-		<% end %>
+		</tbody>
 	</table>
 </div>
+

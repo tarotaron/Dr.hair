@@ -16,3 +16,11 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+
+
+
+$(".hover").hover(
+	function() {
+    $(this).css('display', 'block');
+  }
+);
