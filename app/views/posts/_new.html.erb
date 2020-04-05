@@ -37,13 +37,18 @@
 	 		    		<%= f.text_field :size , rows:'1', class: "form-control" %>
 	 		    	</div>
 					<div class="form-group">
-		                <%= f.attachment_field :post_image %>
+		                <%= f.attachment_field :post_image, id:"image" %>
+		                <% if post.post_image.present? %>
+						  <%= image_tag post.post_image, id: :img_prev %>
+						<% else %>
+						  <%= image_tag "20161008_noimage 2 2.png", id: :img_prev %>
+						<% end %>
 	 		    	</div>
 	 		    </div>
 	 	  </div>
 		  <div class="modal-footer">
 		    	<div class="form-group">
-		    		<%= f.submit '登録' , class:"btn-default btn-lg btn btn-primary " %>
+		    		<%= f.submit 'Create' , class:"btn-default btn-lg btn " %>
 			<% end %>
     		</div>
 	      </div>

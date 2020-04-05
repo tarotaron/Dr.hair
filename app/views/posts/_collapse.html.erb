@@ -3,16 +3,19 @@
 		<a href="#collapse<%= post.id %>" data-toggle="collapse" >続きを読む</a>
 		<!-- data-toggle="collapse＝折りたたみ機能 文字のボタンにする為a hrefを使用 idを持たせる -->
 		<div id="collapse<%= post.id %>" class="collapse">
-			<h3><%= post.title %></h3>
-				<%= post.post_body %><br>
-				<%= post.item %><br>
-				<%= post.winding %><br>
-				<%= post.size %>
-			<div class="row">
-				<div id="comment_index">
-					<%= render 'comments/comments', post: post %>
-				</div>
-		    </div>
+			<div class="col-xs-1"></div>
+			<div class="col-xs-11">
+				<h3><%= post.title %></h3>
+					<%= post.post_body %><br>
+					<%= post.item %><br>
+					<%= post.winding %><br>
+					<%= post.size %>
+				<div class="row">
+					<div id="comment_index">
+						<%= render 'comments/comments', post: post %>
+					</div>
+			    </div>
+			</div>
 		</div>
 	</div>
 </div>
