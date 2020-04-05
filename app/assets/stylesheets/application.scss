@@ -30,9 +30,10 @@
 }
 
 #wrapper {
-	margin-left: 20px;
+	margin-left: 100px;
+	padding: 130px 80px 0px 50px;
+	width: 1000px;
 	display: inline-block;
-	padding: 130px 50px 0px 50px;
 }
 
 .top_wrapper {
@@ -75,78 +76,46 @@ body {
 	background-color: #222;
 }
 
-#left_ber {
-	padding: 15px;
-	height: 900px;
-    position: relative;
-    margin-top: 65px;
-    background-color: #222;
-	position: fixed;
-	margin-left: -20px;
-}
-
-#left_ber div {
-	margin: 100px 0;
-    text-decoration: none;
-    background: #BBBBBB;
-	color: #BBBBBB;
-	width: 60px;
-	height: 60px;
-	font-size: 18px;
-	line-height: 60px;
-	// 行の高さ
-	border-radius: 50%;
-	// 角の丸み 50%で丸
-	text-align: center;
-	overflow: hidden;
-	// 治らなかった部分 hidden=非表示
-	font-weight: bold;
-	// 文字の太さ bold=一般的太字
-	box-shadow: 0px 2px 2px black;
-	// 影 横移動、縦移動、ぼかしレベル、色
-	text-shadow: -1px -1px white, 2px 2px black;
-	border-bottom: solid 3px gray;
-	// 内側の影
-	transition: .4s;
-	// sは秒数 アクションが起きてから変化する速さ
-}
-
 #right_ber {
-	padding-right: 50px;
+	padding-right: 30px;
 	height: 900px;
     margin-top: 300px;
     position: fixed;
-    right: 0px;
+    right: -20px;
 }
 
 button.button1 {
 	text-decoration: none;
-    background: #BBBBBB;
-	color: #BBBBBB;
+    background: gray;
+	color: white;
 	width: 70px;
 	height: 70px;
 	font-size: 40px;
-	line-height: 70px;
-	border-radius: 50%;
-	text-align: center;
-	overflow: hidden;
-	font-weight: bolder;
-	box-shadow: 0px 2px 2px black;
-	text-shadow: -1px -1px white, 2px 2px black;
-	border-bottom: solid 3px gray;
-	transition: .4s;
+	border-radius:25px;
+	margin-bottom: 20px;
+
 }
 
 #search_modal {
 	z-index: 2;
-	margin-left: 400px;
+	padding: 15px;
+	margin-top:150px;
 
 }
 
 #new_modal {
 	// position: static;
-	z-index: 2;
-	margin-left: 300px;
+	width: 500px;
+	z-index: 3;
+	padding: 15px;
+	margin-top:150px;
+}
+
+#edit_modal {
+	width: 500px;
+	z-index: 3;
+	padding: 15px;
+	margin-top:150px;
 }
 
 #user_image {
@@ -173,7 +142,8 @@ button.button1 {
 
 #post_image:hover {
 	position: relative;
-	filter: grayscale(60%);
+	opacity: 0.9;
+	filter: grayscale(10%);
 	// 文字を目立ちやすくグレーのフィルターをかける
 }
 
@@ -216,6 +186,62 @@ button.button1 {
 .btn {
 	 border-radius:25px;
 }
+
+.btn:hover {
+    color: white;
+    background-color: #FFCC00;
+    border: #FF9933;
+}
+
+table {
+	width: 900px;
+}
+
+tbody {
+	width: 900px;
+}
+
+.show.post_collapse {
+	left: 30px;
+}
+
+#img_prev {
+	width: 200px;
+	height: 200px;
+	margin-left: 150px;
+}
+
+.post_user_name {
+	font-size: 20px;
+}
+
+#stylebut:hover {
+	width: 300px;
+	height: 50px;
+	font-size: 30px;
+}
+
+#stylebut{
+	margin-top: 100px;
+}
+
+a:link {
+	color:#222;
+	}
+	// 未訪問
+a:visited {
+	color:#222;
+	} 
+	// 訪問済み
+a:hover {
+	color:gray;
+	}
+	// 乗っている
+a:active {
+	color:#222;
+	}
+	// クリック中
+
 /*
 .top2 {
   background-size: cover;

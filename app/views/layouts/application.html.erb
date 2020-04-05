@@ -113,9 +113,11 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              <%= render 'posts/new', post: @post %>
-            </div>
+            <% unless controller_name == "styles" %>
+              <div class="row">
+                <%= render 'posts/new', post: @post %>
+              </div>
+            <% end %>
           </div>
         </main>
         <% end %>
