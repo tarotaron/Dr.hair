@@ -1,11 +1,16 @@
 <div class="row">
-	<h1>Personal Style</h1>
-</div>
-	<div class="col-xs-4">
-		<%= attachment_image_tag @style, :style_image, :fill, 200, 200, fallback: "20161008_noimage 2 2.png", size:'200x200' %>
+	<div class="col-xs-6">
+		<%= attachment_image_tag @style, :style_image, :fill, 400, 400, fallback: "20161008_noimage 2 2.png", size:'400x400', class:"style_image" %>
 	</div>
-	<div class="col-xs-4">
-		<%= @style.style_body %><br>
-		<%= @style.style_name %>
+	<div class="col-xs-6">
+		<h1>Personal Style</h1>
+		<div class="body">
+			<span class="body_title">point</span>
+			<%= simple_format(@style.style_body) %>
+		</div>
+		<div class="name">
+			<%= simple_format(@style.style_name) %>
+		</div>
+		<i class="fas fa-hand-point-up"></i>検索してみんなの投稿で見てみよう<i class="fas fa-hand-point-up"></i>
 	</div>
 </div>
