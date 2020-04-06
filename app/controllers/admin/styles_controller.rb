@@ -22,6 +22,12 @@ class Admin::StylesController < ApplicationController
 		style.destroy
 		redirect_to admin_styles_path
 	end
+
+	def update
+		@style = Style.find(params[:id])
+		@style.update!(style_params)
+		redirect_to admin_styles_path
+	end
 end
 
 private

@@ -242,6 +242,43 @@ a:active {
 	}
 	// クリック中
 
+.style_image {
+    /*画像表示の仕方*/
+ //    object-fit: none;
+ //    // object-fit: cover;
+ //    /*画像表樹の基準*/
+	// object-position: 50% 0%;
+	object-fit: fill;
+}
+
+.body {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #95ccff;
+    border-radius: 8px;
+}
+.body .body_title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #95ccff;
+    font-weight: bold;
+}
+
+.body p {
+    margin: 0;
+    padding: 0;
+}
+
+.name {
+	padding-left: 50px;
+}
 /*
 .top2 {
   background-size: cover;

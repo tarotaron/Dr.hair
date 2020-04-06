@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   namespace :admin do
   	resources :forms, only:[:index, :create, :destroy]
   	resources :lengths, only:[:index, :create, :destroy]
-    resources :styles, only:[:index, :create, :destroy]
+    resources :styles, only:[:index, :create, :destroy, :update]
   end
     get'forms_csv' => 'forms#forms_csv'
     get'admin/lengths.csv' => 'submit#klengths_to_csv'

@@ -46,7 +46,7 @@
     				<% end %>
     			</div>
     		</div>
-		    </div>
+		</div>
 	</div>
 <div class="row">
 	<h1>スタイル一覧</h1>
@@ -69,7 +69,56 @@
 	            	<%= style.style_name %>
 	            </td>
 				<td>
-					<%= link_to "Destroy", admin_style_path(style), method: :delete, data: { confirm: '削除しますか？' }  %>
+					<div class="post_edit_modal">
+						<button type="button" class="btn  btn-sm" data-toggle="modal" data-target="#styleEditModal<%= style.id %>" data-backdrop="false">Edit</button>
+						<div class="modal" id="styleEditModal<%= style.id %>" role="dialog" >
+						    <div class="modal-dialog modal-dialog-centered" >
+						   		<div class="modal-content" id="edit_modal">
+						      		<div class="modal-header">
+						      			<h1 class="modal_title">Edit style</h1>
+						        			<button type="button" class="close" data-dismiss="modal" >
+						          				<span class="glyphicon glyphicon-remove" ></span>
+						        			</button>
+						      		</div>
+									<%= form_for style, url:admin_style_path(style) do |f| %>
+					       			<div class="modal-body">
+								 		<div class="row">
+							 		    	<div class="form-group">
+												<div class="row">
+									                <%= f.attachment_field :style_image %>
+									            </div>
+								                <div class="row">
+									          	    <lavel>顔型</lavel>
+								          	        <%= f.collection_select(:form_id, Form.all, :id, :form_name, {prompt: "--選択してください--"}) %>
+								          	    </div>
+									            <div class="row">
+									          	    <lavel>髪の長さ</lavel>
+								          	        <%= f.collection_select(:length_id, Length.all, :id, :length_name, {prompt: "--選択してください--"}) %>
+												</div>
+										    	<div class="row">
+										    		<%= f.text_area :style_body, rows:'2', class: "form-control"  %>
+										    	</div>
+										    	<div class="row">
+								 		    		<%= f.text_area :style_name, rows:'2', class: "form-control"  %>
+								 		    	</div>
+								    		</div>
+							 		    </div>
+						  	   		</div>
+							  	    <div class="modal-footer">
+							    		<div class="form-group">
+							    			<div class="col-xs-3">
+							    				<%= f.submit 'Update' , class:"btn-default btn-lg" %>
+							    			</div>
+							    			<div class="col-xs-3">
+							    				<%= link_to "Destroy", admin_style_path(style), method: :delete, data: { confirm: '削除しますか？' }, class:"btn-default btn-lg"   %>
+						      	  			</div>
+								  		</div>
+								    </div>
+								    <% end %>
+								</div>
+					  		</div>
+						</div>
+					</div>
 				</td>
 			</tr>
         </div>
