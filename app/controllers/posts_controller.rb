@@ -6,13 +6,17 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.new(post_params)
 		@post.user_id = current_user.id
-		@post.save
+		if @post.save
 		flash[:notice] = "create post."
 		redirect_to posts_path
+		else
+		@posts = Post.all.order(id: "DESC")
+		render posts_path
+		end
 	end
 
 	def index
-		@posts = Post.all
+		@posts = Post.all.order(id: "DESC")
 		@post =Post.new
 		@favorite = Favorite.new
 		@comment = Comment.new
@@ -20,9 +24,13 @@ class PostsController < ApplicationController
 
 	def update
 		@post = Post.find(params[:id])
-		@post.update!(post_params)
+		if @post.update!(post_params)
 		flash[:notice] = "update post."
 		redirect_to user_path(current_user)
+		else
+		@posts = Post.all.order(id: "DESC")
+		render posts_path
+		end
 	end
 
 	def destroy
@@ -52,10 +60,10 @@ private
 		end
 	end
 	 def correct_user
-		  post = Post.find(params[:id])
-		    if post.user_id != current_user.id
-		      redirect_to top_path
-		    end
+		post = Post.find(params[:id])
+	    if post.user_id != current_user.id
+	      redirect_to top_path
+	    end
 	end
 end
 
