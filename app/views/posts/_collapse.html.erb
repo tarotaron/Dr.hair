@@ -11,7 +11,7 @@
 					<%= post.winding %><br>
 					<%= post.size %>
 				<div class="row">
-					<div id="comment_index">
+					<div id="comment_index_<%= post.id %>">
 						<%= render 'comments/comments', post: post %>
 					</div>
 			    </div>

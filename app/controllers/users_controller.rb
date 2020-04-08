@@ -4,18 +4,21 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@posts = @user.posts
+		@posts = @user.posts.order(id: "DESC")
 		@comment = Comment.new
 		@post = Post.new
 	end
 
 	def update
 		@user = User.find(params[:id])
-		if @user.update!(user_params)
+		if @user.update(user_params)
 			flash[:notice] = "You have updated user successfully."
-		redirect_to user_path(@user)
+			redirect_to user_path(@user)
 		else
-		rendre posts_path
+		@posts = @user.posts.order(id: "DESC")
+		@comment = Comment.new
+		@post = Post.new
+		render user_path(@user)
 		end
 	end
 

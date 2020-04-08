@@ -27,6 +27,17 @@
 							      </div>
 							      <div class="modal-body">
 							      	<%= form_for @user do |f| %>
+							      	<div class="row">
+										<% if @user.errors.any? %>
+									      <div class="alert-warning">
+									        <ul>
+									          <% @user.errors.full_messages.each do |message| %>
+									            <li><%= message %></li>
+									          <% end %>
+									        </ul>
+									      </div>
+									    <% end %>
+									</div>
 							 		<div class="row">
 						 		    	<div class="form-group">
 						 		    		<%= f.label "ニックネーム" %>

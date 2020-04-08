@@ -15,8 +15,6 @@ end
 def self.search(search)
 	if search
 		Post.where(['title LIKE ? OR post_body LIKE ? OR winding LIKE ? OR item LIKE ? OR size LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
-	else
-      flash[:notice] = "no search results found."
     end
 end
 end
