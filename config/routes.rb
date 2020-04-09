@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get'admin/lengths.csv' => 'submit#klengths_to_csv'
     get'admin/styles.csv' => 'submit#styles_to_csv'
 
-    resources :posts, only:[:index, :create, :update, :destroy]do
+    resources :posts, only:[:index, :create, :update, :destroy] do
         resource :favorites, only:[:create, :destroy]
         resources :comments, only:[:create, :destroy]
     end

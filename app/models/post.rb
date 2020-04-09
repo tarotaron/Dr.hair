@@ -8,7 +8,6 @@ def favorited_by?(user)
 		# favoritesのFKとして持ってるuser_idの中にuserのidが存在しているか
 end
 	attachment :post_image
-	
 	validates :title, presence: true
 	validates :post_body, presence: true
 

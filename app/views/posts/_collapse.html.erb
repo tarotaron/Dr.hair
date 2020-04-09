@@ -1,15 +1,22 @@
 <div class="row">
 	<div class="show.post_collapse">
-		<a href="#collapse<%= post.id %>" data-toggle="collapse" >続きを読む</a>
+		<a href="#collapse<%= post.id %>" data-toggle="collapse" class="text-center">続きを読む</a>
 		<!-- data-toggle="collapse＝折りたたみ機能 文字のボタンにする為a hrefを使用 idを持たせる -->
 		<div id="collapse<%= post.id %>" class="collapse">
 			<div class="col-xs-1"></div>
 			<div class="col-xs-11">
 				<h3><%= post.title %></h3>
 					<%= post.post_body %><br>
-					<%= post.item %><br>
+					<br>
+					<br>
+					<label for="post.item">使用アイテム:</label>
+					<%= post.item%><br>
+					<label for="post.winding">巻き方:</label>
 					<%= post.winding %><br>
+					<label for="post.size">コテmm数:</label>
 					<%= post.size %>
+					<br>
+					<br>
 				<div class="row">
 					<div id="comment_index_<%= post.id %>">
 						<%= render 'comments/comments', post: post %>
@@ -20,7 +27,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="comment_form">
+	<div class="comment_form_<%= post.id %>">
 		<%= render 'comments/form' , comment: @comment, post: post %>
 	</div>
 </div>
