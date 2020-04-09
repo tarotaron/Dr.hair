@@ -8,7 +8,9 @@
 	  <div class="modal-dialog modal-dialog-centered" >
 	    <div class="modal-content" id="new_modal">
 	      <div class="modal-header">
-	        <h1 class="modal-title">New Post</h1>
+	      	<div class="col-xs-8">
+	        	<h1 class="modal-title">New Post</h1>
+	        </div>
 	        <button type="button" class="close" data-dismiss="modal" >
 	          <span class="glyphicon glyphicon-remove" ></span>
 	        </button>
@@ -36,26 +38,30 @@
 	 		    		<%= f.label "コメント(必須)" %>
 	 		    		<%= f.text_area :post_body, rows:'2', class: "form-control", id:"required" %>
 	 		    	</div>
-	 		    	<div class="form-group">
-	 		    		<%= f.label "巻き方" %>
-	 		    		<%= f.text_field :winding , rows:'1', class: "form-control" %>
-	 		    	</div>
-	 		    	<div class="form-group">
-	 		    		<%= f.label "セットに使ったアイテム" %>
-	 		    		<%= f.text_field :item , rows:'1', class: "form-control" %>
-	 		    	</div>
-	 		    	<div class="form-group">
-	 		    		<%= f.label "コテのmm数" %>
-	 		    		<%= f.text_field :size , rows:'1', class: "form-control" %>
-	 		    	</div>
-					<div class="form-group">
-		                <%= f.attachment_field :post_image, id:"image" %>
-		                <% if post.post_image.present? %>
-						  <%= image_tag post.post_image, id: :img_prev %>
-						<% else %>
-						  <%= image_tag "20161008_noimage 2 2.png", id: :img_prev %>
-						<% end %>
-	 		    	</div>
+	 		    	<div class="col-xs-6">
+		 		    	<div class="form-group">
+		 		    		<%= f.label "巻き方" %>
+		 		    		<%= f.text_field :winding , rows:'1', class: "form-control" %>
+		 		    	</div>
+		 		    	<div class="form-group">
+		 		    		<%= f.label "セットに使ったアイテム" %>
+		 		    		<%= f.text_field :item , class: "form-control" %>
+		 		    	</div>
+		 		    	<div class="form-group">
+		 		    		<%= f.label "コテのmm数" %>
+		 		    		<%= f.text_field :size , class: "form-control" %>
+		 		    	</div>
+		 		    </div>
+		 		    <div class="col-xs-6">
+						<div class="form-group">
+			                <%= f.attachment_field :post_image, id:"image" %>
+			                <% if post.post_image.present? %>
+							  <%= image_tag post.post_image, id: :img_prev %>
+							<% else %>
+							  <%= image_tag "20161008_noimage 2 2.png", id: :img_prev %>
+							<% end %>
+		 		    	</div>
+		 		    </div>
 	 		    </div>
 	 	  </div>
 		  <div class="modal-footer">

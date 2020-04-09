@@ -1,4 +1,4 @@
-<div class="comment_form">
+<div class="comment_form_<%= post.id %>">
 	<%= form_with(model:[post, comment], url: post_comments_path(post), id: 'comment') do |f| %>
 	<!-- formにするものの指定がpostとネストしているcommentなので配列で記載 -->
 	    <div class="row">
@@ -6,7 +6,7 @@
 	            <%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメント追加....", id:"comment_form" %>
 	        </div>
 	        <div class="col-xs-2">
-	    		<%= f.submit "投稿する", class: "btn btn-lg btn-base-1 mt-10 pull-right" %>
+	    		<%= f.submit "投稿する", class: "btn btn-lg btn-base-1 mt-10 pull-left", id:"comment_btn" %>
 	    	</div>
 	    </div>
 	<% end %>

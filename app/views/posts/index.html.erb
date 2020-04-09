@@ -1,59 +1,90 @@
 <div class="row">
 	<div class="col-xs-8">
 		<h1>POST</h1>
+		<% if @post.errors.any? %>
+	      <div class="alert-warning">
+	        <ul>
+	          <% @post.errors.full_messages.each do |message| %>
+	            <li><%= message %></li>
+	          <% end %>
+	        </ul>
+	      </div>
+		 <% end %>
 	</div>
 </div>
 <div class="row">
-	<table class="table">
-		<% @posts.each do |post| %>
-		<%# @posts.each_with_index do |post, i| %>
-		<!-- 普通のeach文ではcollapseがeachされなかった為それぞれの数字を定義してiを持たせたけどpost.idは一個しかないからpost.idで良かった -->
-		<!-- <a href="#collapse<%#= i %>" data-toggle="collapse" >続きを読む</a>
-		<div id="collapse<%#= i %>" class="collapse"> -->
-			<tr>
-				<td>
-					<div class="post">
-						<div class="row">
-							<%= link_to user_path(post.user.id) do %>
-								<div class="col-xs-1">
-									<div class="post_user_image">
-										<%= attachment_image_tag post.user, :icon_image, :fill, 60, 60, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40', id:"user_image", class:"img-circle" %>
+	<div class="col-xs-9">
+		<table class="table">
+			<% @posts.each do |post| %>
+			<%# @posts.each_with_index do |post, i| %>
+			<!-- 普通のeach文ではcollapseがeachされなかった為それぞれの数字を定義してiを持たせたけどpost.idは一個しかないからpost.idで良かった -->
+			<!-- <a href="#collapse<%#= i %>" data-toggle="collapse" >続きを読む</a>
+			<div id="collapse<%#= i %>" class="collapse"> -->
+				<tr>
+					<td>
+						<div class="post">
+							<div class="row">
+								<%= link_to user_path(post.user.id) do %>
+									<div class="col-xs-1">
+										<div class="post_user_image">
+											<%= attachment_image_tag post.user, :icon_image, :fill, 60, 60, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40', id:"user_image", class:"img-circle" %>
+										</div>
 									</div>
-								</div>
-								<div class="post_user_name">
-									<div class="col-xs-2">
-										<strong><%= post.user.name %></strong>
+									<div class="post_user_name">
+										<div class="col-xs-2">
+											<strong><%= post.user.name %></strong>
+										</div>
 									</div>
-								</div>
-							<% end %>
-						</div>
-						<div class="row">
-							<div class="post_image">
-								<%= attachment_image_tag post, :post_image, :fill, 614, 614, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'600x600'  %>
+								<% end %>
 							</div>
-							<div class="col-xs-1">
+							<div class="row">
+								<div class="post_image">
+									<%= attachment_image_tag post, :post_image, :fill, 614, 614, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'600x600'  %>
+								</div>
 								<div id="favorite_btn-<%= post.id %>">
 									<!-- idだけだとどのpostの物かわからない為post.idを持たせる -->
 									<%= render 'favorites/favorite', post: post %>
 								</div>
 							</div>
-							<div class="col-xs-1">
-								<div class="comment_icon" >
-									<i class="far fa-comment-dots fa-2x" id="icon"></i>
+							<div class="row">
+								<div class="post_collapse">
+									<%= render 'posts/collapse', post: post %>
 								</div>
 							</div>
 						</div>
+					</td>
+				<tr>
+			<% end %>
+		</table>
+	</div>
+	<div class="col-xs-3">
+		<table class="ranking_table">
+			<% @ranks.each.with_index(1) do |user, i| %>
+		<!-- 	(1)で1から配列スタート 記載していないと0から始まる -->
+			<tr>
+				<td>
+					<div class="post">
+						<%= link_to user_path(user) do %>
 						<div class="row">
-							<%= post.favorites.count %>人が『いいね！』しました
-						</div>
-						<div class="row">
-							<div class="post_collapse">
-								<%= render 'posts/collapse', post: post %>
+							<div class="col-xs-1">
+								<h2>No.<%= i %></h2>
+							</div>
+							<div class="col-xs-1">
+								<div class="post_user_image">
+									<%= attachment_image_tag user, :icon_image, :fill, 40, 40, format: 'jpeg', fallback: "20161008_noimage 2 2.png",size:'40x40', id:"user_image",class:"img-circle"%>
+								</div>
+							</div>
+							<div class="post_user_name">
+								<div class="col-xs-2">
+									<strong><%= user.name %></strong>
+								</div>
 							</div>
 						</div>
+						<% end %>
 					</div>
 				</td>
-			<tr>
-		<% end %>
-	</table>
+			</tr>
+			<% end %>
+		</table>
+	</div>
 </div>

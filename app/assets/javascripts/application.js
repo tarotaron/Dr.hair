@@ -40,35 +40,35 @@ $('#img_prev').attr('src', e.target.result);
 $("#image").change(function(){
     readURL(this);
   });
-  });
+
 
 $("#icon").on('click',function() {
     console.log('on.click');
     $("#comment_form").focus();
     });
-
-
-$(function() {
-    //送信ボタンを無効化 .prop=formに多く使用
-    $('#confirm').prop("disabled", true);
-    // .change=中身が変更された際にイベント処理を実行
-    $('#comment_form').change(function () {
-        //変数let=変更不可
-        let flag = true;
-        $('#comment_form').each(function(e) {
-            //もし必須項目が空なら
-            if ($('required').eq(e).val() === "") {
-                flag = false;
-            }
-        });
-        if (flag) {
-            $('#confirm').prop("disabled", false);
-        }
-        else {
-            $('#confirm').prop("disabled", true);
-        }
-    });
 });
+
+// $(function() {
+//     //送信ボタンを無効化 .prop=formに多く使用
+//     $('#comment_btn').prop("disabled", true);
+//     // .change=中身が変更された際にイベント処理を実行
+//     $('#comment_form').change(function () {
+//         //変数let=変更不可
+//         let flag = true;
+//         $('#comment_form').each(function(e) {
+//             //もし必須項目が空なら
+//             if ($('#comment_form').eq(e).val() === "") {
+//                 flag = false;
+//             }
+//         });
+//         if (flag) {
+//             $('#comment_btn').prop("disabled", false);
+//         }
+//         else {
+//             $('#comment_btn').prop("disabled", true);
+//         }
+//     });
+// });
 
 
 
