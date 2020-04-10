@@ -4,7 +4,7 @@
 	</button>
 	<div class="modal" id="postEditModal<%= post.id %>" role="dialog" >
 	    <div class="modal-dialog modal-dialog-centered" >
-	   		<div class="modal-content" id="edit_modal">
+	   		<div class="modal-content">
 	      		<div class="modal-header">
 	      			<h1 class="modal_title">Edit Post</h1>
 	        			<button type="button" class="close" data-dismiss="modal" >
@@ -12,7 +12,7 @@
 	        			</button>
 	      		</div>
       			<%= form_for post do |f| %>
-       			<div class="modal-body">
+       			<div class="modal-body" id="edit_modal">
 			 		<div class="row">
 		 		    	<div class="form-group">
 		 		    		<%= f.label "タイトル(必須)" %>

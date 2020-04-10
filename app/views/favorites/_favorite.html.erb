@@ -3,11 +3,11 @@
 		<div class="favorite">
 			<% if post.favorited_by?(current_user) %>
 			    <%= link_to post_favorites_path(post.id), method: :delete, remote: true do %>
-			    <i class="fas fa-heart fa-2x" style="color: red;"></i>
+			    <i class="far fa-thumbs-down fa-2x" style="color: red;"></i>
 			    <% end %>
 			<% else %>
 			    <%= link_to post_favorites_path(post.id), method: :post, remote: true do %>
-			    <i class="far fa-heart fa-2x" style="color: red;"></i>
+			    <i class="far fa-thumbs-up fa-2x" style="color: red;"></i>
 			    <% end %>
 			<% end %>
 		</div>
@@ -19,5 +19,5 @@
 	</div>
 </div>
 <div class="row">
-	<%= post.favorites.count %>人が『いいね！』しました
+	<span><%= post.favorites.count %></span> good!
 </div>

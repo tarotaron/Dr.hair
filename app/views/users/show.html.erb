@@ -18,7 +18,7 @@
 							</button>
 							<div class="modal" id="userEditModal" role="dialog" >
 							  <div class="modal-dialog modal-dialog-centered" >
-							    <div class="modal-content">
+							    <div class="modal-content" id="edit_modal">
 							      <div class="modal-header">
 							        <h1 class="modal-title">Edit User</h1>
 							        <button type="button" class="close" data-dismiss="modal" >
@@ -45,11 +45,11 @@
 						 		    	</div>
 										<div class="form-group">
 							            	<%= f.attachment_field :icon_image, id:"image" %>
-							 		    	<% if @user.icon_image.present? %>
-											  <%= image_tag @user.icon_image, id: :img_prev %>
-											<% else %>
-											  <%= image_tag "20161008_noimage 2 2.png", id: :img_prev %>
-											<% end %>
+							 		    	<%# if @user.icon_image.present? %>
+											  <%#= image_tag @user.icon_image, id: :img_prev%>
+											<%# else %>
+											  <%#= image_tag "20161008_noimage 2 2.png", id: :img_prev %>
+											<%# end %>
 						 		    	</div>
 						 		    </div>
 						 	  	  </div>
@@ -75,16 +75,16 @@
 			<tr>
 			<% @posts.each_slice(3) do |slice|  %>
 				<td>
-					<div class="post">
+					<div class="user_post">
 						<div class="row">
 						<% slice.each do |post| -%>
 							<% if post.user_id == current_user.id %>
 								<%= render 'posts/edit', post: post %>
 							<% end %>
-							<div class="post_image">
+							<div class="user">
 								<button type="button" data-toggle="modal" data-target="#postModal<%= post.id %>" data-backdrop="false" id="post_image">
-									<%= attachment_image_tag post, :post_image, :fill, 614, 614, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'300x300',id:"post_image" %>
-									<p>♡<%= post.favorites.count %></p>
+									<%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'300x300',id:"post_image" %>
+									<p class="far fa-thumbs-up"><%= post.favorites.count %></p>
 									<i class="far fa-comment fa-2x"><%= post.comments.count %></i>
 								</button>
 								<div class="modal" id="postModal<%= post.id %>" role="dialog" >
@@ -96,29 +96,15 @@
 											    </button>
 										    </div>
 										    <div class="modal-body">
-												<div class="post">
+												<div class="user_post">
 													<div class="row">
-														<div class="post_image">
-															<div class="col-xs-10" >
-																<%= attachment_image_tag post, :post_image, :fill, 614, 614, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'400x400' %>
-															</div>
-															<div class="col-xs-2">
-																<% if post.user_id == current_user.id %>
-																<% end %>
-															</div>
+														<div class="modal_image">
+															<%= attachment_image_tag post, :post_image, :fill, 500, 500, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'500x500' %>
 														</div>
 													</div>
 													<div class="row">
-														<div class="col-xs-1">
-															<div id="favorite_btn-<%= post.id %>">
-																<%= render 'favorites/favorite', post: post %>
-															</div>
-														</div>
-														<div class="col-xs-1">
-															<div class="comment_icon" >
-																<laval for="comment_comment"><i class="far fa-comment fa-2x"></i>
-																</laval>
-															</div>
+														<div id="favorite_btn-<%= post.id %>">
+															<%= render 'favorites/favorite', post: post %>
 														</div>
 													</div>
 													<div class="post_collapse">
@@ -139,4 +125,3 @@
 		</tbody>
 	</table>
 </div>
-
