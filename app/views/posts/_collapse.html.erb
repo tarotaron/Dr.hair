@@ -1,10 +1,11 @@
 <div class="row">
 	<div class="show.post_collapse">
-		<a href="#collapse<%= post.id %>" data-toggle="collapse" class="text-center">続きを読む</a>
+		<div class="col-xs-2 col-xs-offset-5">
+			<a href="#collapse<%= post.id %>" data-toggle="collapse" style="font-size: 15pt; color: gray;">⬇︎click⬇︎</a>
+		</div>
 		<!-- data-toggle="collapse＝折りたたみ機能 文字のボタンにする為a hrefを使用 idを持たせる -->
 		<div id="collapse<%= post.id %>" class="collapse">
-			<div class="col-xs-1"></div>
-			<div class="col-xs-11">
+			<div class="col-xs-8 col-xs-offset-2">
 				<h3><%= post.title %></h3>
 					<%= post.post_body %><br>
 					<br>
@@ -17,17 +18,17 @@
 					<%= post.size %>
 					<br>
 					<br>
-				<div class="row">
-					<div id="comment_index_<%= post.id %>">
-						<%= render 'comments/comments', post: post %>
-					</div>
-			    </div>
+			</div>
+			<div class="col-xs-10 col-xs-offset-1">
+				<div id="comment_index_<%= post.id %>">
+					<%= render 'comments/comments', post: post %>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="row">
-	<div class="comment_form_<%= post.id %>">
+	<div class="comment_form_<%= post.id %>" id="comment_form">
 		<%= render 'comments/form' , comment: @comment, post: post %>
 	</div>
 </div>
