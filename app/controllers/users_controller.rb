@@ -11,14 +11,14 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		if @user.update!(user_params)
+		if @user.update(user_params)
 			flash[:notice] = "You have updated user successfully."
 			redirect_to user_path(@user)
 		else
-		@posts = @user.posts.order(id: "DESC")
-		@comment = Comment.new
-		@post = Post.new
-		render user_path(@user)
+			@posts = @user.posts.order(id: "DESC")
+			@comment = Comment.new
+			@post = Post.new
+			render user_path(@user)
 		end
 	end
 

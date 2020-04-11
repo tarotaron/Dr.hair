@@ -6,5 +6,6 @@ class SearchController < ApplicationController
 	@favorite = Favorite.new
 	@comment = Comment.new
 	@post =Post.new
+	@search = params[:search]
   end
 end

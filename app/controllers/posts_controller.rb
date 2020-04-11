@@ -13,9 +13,10 @@ class PostsController < ApplicationController
 			@posts = Post.all.order(id: "DESC")
 			@favorite = Favorite.new
 			@comment = Comment.new
+			user_ids = Favorite.joins(:post).group("posts.user_id").order("count_all desc").limit(3).count.keys
+			@ranks = User.where(id:user_ids).sort_by{ |user| user_ids.index(user.id)}
 			render "index"
-			# render posts_path
-		end
+   		end
 	end
 
 	def index
@@ -35,13 +36,16 @@ class PostsController < ApplicationController
 	end
 
 	def update
-		@post = Post.find(params[:id])
-		if @post.update!(post_params)
+		@update_post = Post.find(params[:id])
+		if @update_post.update(post_params)
 			flash[:notice] = "update post."
 			redirect_to user_path(current_user)
 		else
-			@posts = Post.all.order(id: "DESC")
-			render posts_path
+			@user = User.find(@update_post.user_id)
+			@posts = @user.posts.order(id: "DESC")
+			@comment = Comment.new
+			@post = Post.new
+			render "users/show"
 		end
 	end
 

@@ -22,7 +22,7 @@
 								<%= link_to user_path(post.user.id) do %>
 									<div class="col-xs-1">
 										<div class="post_user_image">
-											<%= attachment_image_tag post.user, :icon_image, :fill, 60, 60, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40', id:"user_image", class:"img-circle" %>
+											<%= attachment_image_tag post.user, :icon_image, :fill, 60, 60, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40', id:"mini_user_image", class:"img-circle" %>
 										</div>
 									</div>
 									<div class="post_user_name">
@@ -54,7 +54,7 @@
 	</div>
 	<div class="col-xs-3">
 		<div id="ranking_table">
-			<h1>User Ranking<i class="fas fa-crown" style="color: yellow"></i></h1>
+			<h1>User Ranking<i class="fas fa-crown" style="color: gray"></i></h1>
 			<% @ranks.each.with_index(1) do |user, i| %>
 		<!-- 	(1)で1から配列スタート 記載していないと0から始まる -->
 				<div class="ranks">
@@ -65,7 +65,7 @@
 							</div>
 							<div class="col-xs-3">
 								<div class="post_user_image">
-									<%= attachment_image_tag user, :icon_image, :fill, 60, 60, format: 'jpeg', fallback: "20161008_noimage 2 2.png",size:'60x60', id:"user_image",class:"img-circle"%>
+									<%= attachment_image_tag user, :icon_image,  format: 'jpeg', fallback: "20161008_noimage 2 2.png",size:'60x60', id:"mini_user_image",class:"img-circle"%>
 								</div>
 							</div>
 							<div class="post_user_name">
