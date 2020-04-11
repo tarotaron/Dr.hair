@@ -20,30 +20,35 @@
 
 // カーソルが上に乗った時
 $(".hover").hover(
-	function() {
+  function() {
     $(this).css('display', 'block');
-  });
+  }
+);
      // p、div、ul、h1〜h6などのタグの初期値 block
      // block⇒要素が横までいっぱいに広がり、縦に並んでいく
 
-
-$("#icon").on('click',function() {
-    console.log('on.click');
-    $("#comment_form").focus();
-    });
-
 $(function() {
- function readURL(input) {
-   if (input.files && input.files[0]) {
-     var reader = new FileReader();
-     reader.onload = function (e) {
-       $('#img_prev').attr('src', e.target.result);
-     }
-     reader.readAsDataURL(input.files[0]);
-   }
- }
- $("#image").change(function(){
-   readURL(this);
- });
+  $("#icon").on('click',function() {
+  console.log('on.click');
+    $("#comment_form").focus();
+  });
+});
+
+// $(document).ready(function () {
+// })
+
+$(document).on('turbolinks:load', function() {
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $(input).parents("div").find(".img_prev").attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $(".image").change(function(){
+    readURL(this);
+  });
 });
 

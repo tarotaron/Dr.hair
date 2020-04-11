@@ -10,6 +10,8 @@ end
 	attachment :post_image
 	validates :title, presence: true
 	validates :post_body, presence: true
+	validates :post_image, presence: true
+	
 
 def self.search(search)
 	if search

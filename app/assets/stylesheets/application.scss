@@ -44,15 +44,17 @@
 
 html {
 	width: 1400px;
-	font-family: 'Impact',sans-serif;
+	font-family: 'Impact','ヒラギノ角ゴシック','Hiragino Sans';
 	// background-color: #222;
+	color: #222;
 }
 
 .container {
 	width: 1400px;
 	background-color: white;
 	margin: 20px;
-	font-family: 'Impact',sans-serif;
+	font-family:  'Impact','ヒラギノ角ゴシック','Hiragino Sans';
+	color: #222;
 }
 
 #logo {
@@ -68,10 +70,10 @@ html {
 }
 
 #about_modal {
-	width: 400px;
-	height: 600px;
-	margin-left: 600px;
-	margin-top: 200px;
+	width: 500px;
+	height: 850px;
+	margin-left: 500px;
+	margin-top: 0px;
 }
 
 body {
@@ -132,6 +134,19 @@ button.button1 {
 #user_image {
 	padding: 2px;
 	border:2px solid #CC0000;
+	object-position: 50% 0%;
+	object-fit: fill;
+	width: 100px;
+	height: 100px;
+}
+
+#mini_user_image {
+	padding: 2px;
+	border:2px solid #CC0000;
+	object-position: 50% 0%;
+	object-fit: fill;
+	width: 60px;
+	height: 60px;
 }
 
 #comment_user_image {
@@ -208,7 +223,7 @@ button.button1 {
 	left: 30px;
 }
 
-#img_prev {
+.img_prev {
 	width: 200px;
 	height: 200px;
 	margin-left: 0px;
