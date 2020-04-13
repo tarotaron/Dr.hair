@@ -1,0 +1,2 @@
+id,email,encrypted_password,reset_password_token,reset_password_sent_at,remember_created_at,created_at,updated_at
+1,admin@admin,$2a$11$m5KduU0qqLS6FIfCTGcGBunCRmTJQJpft4KrC0tgH.V2EBtmjtD3C,,,,"2020-03-21 10:33:51.328363","2020-03-21 10:33:51.328363"

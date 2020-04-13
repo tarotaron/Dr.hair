@@ -27,28 +27,39 @@ $(".hover").hover(
      // p、div、ul、h1〜h6などのタグの初期値 block
      // block⇒要素が横までいっぱいに広がり、縦に並んでいく
 
-$(function() {
-  $("#icon").on('click',function() {
-  console.log('on.click');
-    $("#comment_form").focus();
-  });
+$(".far fa-comment-dots").on('click',function() {
+  console.log(on.click)
+  $(this).parents("div").find(".form-control").focus();
 });
 
+$('i').click(function(){
+  console.log(on.click)
+  $(document).getElementById('.comment_form').getElementsByClassName('.form-control').focus();
+});
+
+// $(function()は↓の略
 // $(document).ready(function () {
 // })
-
 $(document).on('turbolinks:load', function() {
+// application.jsがrailsを起動した際に読み込まれる為ページ遷移時に毎回loadするようにする
   function readURL(input) {
     if (input.files && input.files[0]) {
+      // input.filesが1枚以上存在したら
       var reader = new FileReader();
+      // FileReader=ファイルを非同期に読み込む
       reader.onload = function (e) {
+      // FileReader.onload= 読み込みが正常に完了した時に{}が発火
         $(input).parents("div").find(".img_prev").attr('src', e.target.result);
       }
+      // inputを起点にの親divから.img_prevを探しsrcの値を取得
       reader.readAsDataURL(input.files[0]);
     }
+    // readAsDataURL=ファイルを読み込むメソッド
   }
   $(".image").change(function(){
     readURL(this);
+    // .imageが変わったら
+    // thisは何回も使用する変数なのでinputに変えている
   });
 });
 
