@@ -27,14 +27,9 @@ $(".hover").hover(
      // p、div、ul、h1〜h6などのタグの初期値 block
      // block⇒要素が横までいっぱいに広がり、縦に並んでいく
 
-$(".far fa-comment-dots").on('click',function() {
-  console.log(on.click)
+$(".far").on('click',function() {
+  console.log('on.click');
   $(this).parents("div").find(".form-control").focus();
-});
-
-$('i').click(function(){
-  console.log(on.click)
-  $(document).getElementById('.comment_form').getElementsByClassName('.form-control').focus();
 });
 
 // $(function()は↓の略
