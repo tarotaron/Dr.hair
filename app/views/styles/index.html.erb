@@ -7,10 +7,10 @@
 					<% @forms.each do |form| %>
 						<div class="row">
 							<div class="form-check">
-								<%= check_box_tag :form_id, form.id, false, class: "form-check-input" %>
+								<%= radio_button_tag :form_id, form.id, false, class: "form-check-input", required: true %>
 <!-- :form_idは名前の定義だからなんでも良い form.idは次のビューで必要な情報はidなので表記 オールチェックされた為false表記
-検証で見ると→ <input type="checkbox" name="form_id" id="form_id" value="3" class="form-check-input"> -->
-<!--                                                                ↑ idがちゃんと出てOK -->
+検証で見ると→ <input type="radio" name="form_id" id="form_id" value="3" class="form-check-input"> -->
+<!--                                                                ↑ idがちゃんと出てOK required: trueはエラー分-->
 								<%= form.form_name %>
 							</div>
 							<div class="row">
@@ -32,7 +32,7 @@
 					<% @lengths.each do |length| %>
 						<div class="row">
 							<div class="form-check">
-								<%= check_box_tag :length_id, length.id, false, class:  "form-check-input"  %>
+								<%= radio_button_tag :length_id, length.id, false, class:  "form-check-input", required: true %>
 								<%= length.length_name %>
 							</div>
 						</div>

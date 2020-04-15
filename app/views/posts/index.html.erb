@@ -81,3 +81,9 @@
 		</div>
 	</div>
 </div>
+<script>
+$(".far").on('click',function() {
+  console.log('on.click');
+  $(this).parents(".post_index").find(".form-control").focus();
+});
+</script>
