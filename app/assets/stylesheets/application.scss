@@ -17,9 +17,9 @@
 @import "bootstrap";
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .naver {
@@ -82,21 +82,20 @@ body {
 
 #right_ber {
 	padding-right: 30px;
-    margin-top: 300px;
-    position: fixed;
-    right: -20px;
+	margin-top: 300px;
+	position: fixed;
+	right: -20px;
 }
 
 button.button1 {
 	text-decoration: none;
-    background: gray;
+	background: gray;
 	color: white;
 	width: 70px;
 	height: 70px;
 	font-size: 40px;
 	border-radius:25px;
 	margin-bottom: 20px;
-
 }
 
 #search_modal {
@@ -210,13 +209,13 @@ button.button1 {
 }
 
 .btn {
-	 border-radius:25px;
+	border-radius:25px;
 }
 
 .btn:hover {
-    color: white;
-    background-color: #FFCC00;
-    border: #FF9933;
+	color: white;
+	background-color: #FFCC00;
+	border: #FF9933;
 }
 
 .show.post_collapse {
@@ -245,19 +244,19 @@ button.button1 {
 
 a:link {
 	color:#222;
-	}
+}
 	// 未訪問
 a:visited {
 	color:#222;
-	} 
+}
 	// 訪問済み
 a:hover {
 	color:gray;
-	}
+}
 	// 乗っている
 a:active {
 	color:#222;
-	}
+}
 	// クリック中
 
 .style_image {
@@ -272,28 +271,28 @@ a:active {
 }
 
 .body {
-    position: relative;
-    margin: 2em 0;
-    padding: 0.5em 1em;
-    border: solid 3px #95ccff;
-    border-radius: 8px;
+	position: relative;
+	margin: 2em 0;
+	padding: 0.5em 1em;
+	border: solid 3px #95ccff;
+	border-radius: 8px;
 }
 .body .body_title {
-    position: absolute;
-    display: inline-block;
-    top: -13px;
-    left: 10px;
-    padding: 0 9px;
-    line-height: 1;
-    font-size: 19px;
-    background: #FFF;
-    color: #95ccff;
-    font-weight: bold;
+	position: absolute;
+	display: inline-block;
+	top: -13px;
+	left: 10px;
+	padding: 0 9px;
+	line-height: 1;
+	font-size: 19px;
+	background: #FFF;
+	color: #95ccff;
+	font-weight: bold;
 }
 
 .body p {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .name {
@@ -321,9 +320,9 @@ a:active {
 }
 
 #btn:hover {
-    color: white;
-    background-color: #FFCC00;
-    border: #FF9933;
+	color: white;
+	background-color: #FFCC00;
+	border: #FF9933;
 }
 
 .setting_wrapper {
@@ -334,15 +333,15 @@ a:active {
 
 
 #form-style {
- background: transparent;
-  border: none;
-  border-bottom: 2px solid #222;
-  color: #222;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1em;
-  height: 25px;
-  transition: border-color 0.3s;
-  width: 200px;
+	background: transparent;
+	border: none;
+	border-bottom: 2px solid #222;
+	color: #222;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	height: 25px;
+	transition: border-color 0.3s;
+	width: 200px;
 }
 
 .title1 {
@@ -399,12 +398,3 @@ a:active {
 	padding: 18px;
 }
 
-/*
-.top2 {
-  background-size: cover;
-  background-position: center;
-  background-image: image-url('IMG_77962.JPG');
-  width: 500px;
-  height: 700px;
-}
-*/
