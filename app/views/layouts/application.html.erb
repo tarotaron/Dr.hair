@@ -2,11 +2,10 @@
 <html>
   <head>
     <title>Dr.hair</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
   <body>
@@ -43,87 +42,7 @@
           </div>
         </main>
       <% elsif user_signed_in? %>
-        <header>
-          <div class="row">
-            <nav class="navbar navbar-fixed-top navbar-inverse">
-              <h1 class="col-xs-6" id="logo">Dr.hair</h1>
-              <div class="col-xs-6">
-                <div class="nav">
-                  <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item"><%= link_to "Logout", destroy_user_session_path , method: :delete %>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
-          </div>
-          <div class="row" >
-            <% unless controller_name == "homes" %>
-              <nav class="navbar navbar-fixed-top navbar-center" id="second_navber">
-                <div class="nav">
-                  <ul class="nav navbar-nav">
-                    <li class="nav-item"><%= link_to 'TOP', root_path, :style=>"color:#BBBBBB;"  %>
-                    </li>
-                    <li class="nav-item"><%= link_to 'POST', posts_path, :style=>"color:#BBBBBB;" %>
-                    </li>
-                    <li class="nav-item"><%= link_to 'MY PAGE', user_path(current_user.id), :style=>"color:#BBBBBB;" %>
-                    </li>
-                    <li class="nav-item"><%= link_to 'MY PERSONAL', styles_path, :style=>"color:#BBBBBB;" %>
-                    </li>
-                  </ul>
-                </div>
-              </nav>
-          </div>
-        </header>
-        <main>
-          <div class="col-xs-11" id="wrapper">
-              <%= flash[:notice] %>
-              <%= yield %>
-          </div>
-          <div class="col-xs-1" id="right_ber">
-            <div class="row">
-              <div class="search_modal">
-                <button type="button" class="button1" data-toggle="modal" data-target="#searchModal" data-backdrop="false">
-                  <i class="fas fa-search"></i>
-                </button>
-                <div class="modal" id="searchModal" role="dialog" >
-                  <div class="modal-dialog modal-dialog-centered" >
-                    <div class="modal-content" id="search_modal" >
-                      <div class="modal-header">
-                        <h1 class="modal-title">SEARCH</h1>
-                        <button type="button" class="close" data-dismiss="modal" >
-                          <span class="glyphicon glyphicon-remove" ></span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <%= form_tag(search_path, method: :get) do %>
-                          <div class="form-group">
-                            <%= label_tag "キーワード" %>
-                            <%= text_field_tag :search %>
-                          </div>
-                          <p>スタイル名、巻き方、コテのミリ数、気になるキーワードで検索<br>
-                             [例 切りっぱなしボブ, 例 波ウェーブ, 例 32mm, 例 艶髪]<p>
-                      </div>
-                      <div class="modal-footer">
-                        <div class="form-group">
-                          <%= submit_tag 'Search' ,:name => nil, class:"btn-default btn-lg btn " %>
-                        </div>
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <% unless controller_name == "styles" %>
-              <div class="row">
-                <%= render 'posts/new', post: @post %>
-              </div>
-            <% end %>
-          </div>
-        </main>
-        <% end %>
-        <% if controller_name == "homes" %>
+        <% unless controller_name == "homes" %>
           <header>
             <div class="row">
               <nav class="navbar navbar-fixed-top navbar-inverse">
@@ -134,6 +53,85 @@
                       <li class="nav-item"><%= link_to "Logout", destroy_user_session_path , method: :delete %>
                       </li>
                     </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+            <div class="row" >
+                <nav class="navbar navbar-fixed-top navbar-center" id="second_navber">
+                  <div class="nav">
+                    <ul class="nav navbar-nav">
+                      <li class="nav-item"><%= link_to 'TOP', root_path, :style=>"color:#BBBBBB;"  %>
+                      </li>
+                      <li class="nav-item"><%= link_to 'POST', posts_path, :style=>"color:#BBBBBB;" %>
+                      </li>
+                      <li class="nav-item"><%= link_to 'MY PAGE', user_path(current_user.id), :style=>"color:#BBBBBB;" %>
+                      </li>
+                      <li class="nav-item"><%= link_to 'MY PERSONAL', styles_path, :style=>"color:#BBBBBB;" %>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+            </div>
+          </header>
+          <main>
+            <div class="col-xs-11" id="wrapper">
+              <%= flash[:notice] %>
+              <%= yield %>
+            </div>
+            <div class="col-xs-1" id="right_ber">
+              <div class="row">
+                <div class="search_modal">
+                  <button type="button" class="button1" data-toggle="modal" data-target="#searchModal" data-backdrop="false">
+                    <i class="fas fa-search"></i>
+                  </button>
+                    <div class="modal" id="searchModal" role="dialog" >
+                      <div class="modal-dialog modal-dialog-centered" >
+                        <div class="modal-content" id="search_modal" >
+                          <%= form_tag(search_path, method: :get) do %>
+                            <div class="modal-header">
+                              <h1 class="modal-title">SEARCH</h1>
+                              <button type="button" class="close" data-dismiss="modal" >
+                                <span class="glyphicon glyphicon-remove" ></span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <%= label_tag "キーワード" %>
+                                <%= text_field_tag :search %>
+                              </div>
+                              <p>スタイル名、巻き方、コテのミリ数、気になるキーワードで検索<br>
+                                [例 切りっぱなしボブ, 例 波ウェーブ, 例 32mm, 例 艶髪]<p>
+                            </div>
+                            <div class="modal-footer">
+                              <div class="form-group">
+                                <%= submit_tag 'Search' ,:name => nil, class:"btn-default btn-lg btn " %>
+                              </div>
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <% unless controller_name == "styles" %>
+                <div class="row">
+                  <%= render 'posts/new', post: @post %>
+                </div>
+              <% end %>
+            </div>
+          </main>
+        <% else %>
+          <header>
+            <div class="row">
+              <nav class="navbar navbar-fixed-top navbar-inverse">
+              <h1 class="col-xs-6" id="logo">Dr.hair</h1>
+                <div class="col-xs-6">
+                  <div class="nav">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item"><%= link_to "Logout", destroy_user_session_path , method: :delete %>
+                    </li>
+                  </ul>
                   </div>
                 </div>
               </nav>

@@ -1,16 +1,16 @@
 <div class="row" id="style_show">
-	<div class="col-xs-6">
-		<%= attachment_image_tag @style, :style_image, fallback: "20161008_noimage 2 2.png", class:"style_image" %>
-	</div>
-	<div class="col-xs-6">
-		<h1>Personal Style</h1>
-		<div class="body">
-			<span class="body_title">point</span>
-			<%= simple_format(@style.style_body) %>
-		</div>
-		<div class="name">
-			<%= simple_format(@style.style_name) %>
-		</div>
-		<i class="fas fa-hand-point-up"></i>検索してみんなの投稿で見てみよう<i class="fas fa-hand-point-up"></i>
-	</div>
+  <div class="col-xs-6">
+    <%= attachment_image_tag @style, :style_image, fallback: "20161008_noimage 2 2.png", class:"style_image" %>
+  </div>
+  <div class="col-xs-6">
+    <h1>Personal Style</h1>
+    <div class="body">
+      <span class="body_title">point</span>
+      <%= simple_format(@style.style_body) %>
+    </div>
+    <div class="name">
+      <%= simple_format(@style.style_name) %>
+    </div>
+    <i class="fas fa-hand-point-up"></i>検索してみんなの投稿で見てみよう<i class="fas fa-hand-point-up"></i>
+  </div>
 </div>

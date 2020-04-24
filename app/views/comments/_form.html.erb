@@ -1,17 +1,17 @@
 <div class="comment_form_<%= post.id %>">
-	<%= form_with(model:[post, comment], url: post_comments_path(post), id: 'comment') do |f| %>
-	<!-- formにするものの指定がpostとネストしているcommentなので配列で記載 -->
-		<div class="row">
-			<div class="col-xs-9">
-				<div class="comment_form">
-					<%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメント追加...." %>
-				</div>
-			</div>
-			<div class="col-xs-1">
-				<%= f.submit "Submit", class: "btn btn-default btn-lg btn-base-1 mt-10 pull-left", id:"comment_btn" %>
-			</div>
-		</div>
-	<% end %>
+  <%= form_with(model:[post, comment], url: post_comments_path(post), id: 'comment') do |f| %>
+  <!-- formにするものの指定がpostとネストしているcommentなので配列で記載 -->
+    <div class="row">
+      <div class="col-xs-9">
+        <div class="comment_form">
+          <%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメント追加...." %>
+        </div>
+      </div>
+      <div class="col-xs-1">
+        <%= f.submit "Submit", class: "btn btn-default btn-lg btn-base-1 mt-10 pull-left", id:"comment_btn" %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 

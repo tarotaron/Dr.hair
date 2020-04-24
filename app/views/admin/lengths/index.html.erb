@@ -1,45 +1,45 @@
 <div class="row">
-	<h1>長さ追加</h1>
+  <h1>長さ追加</h1>
 </div>
 <div class="row">
-	<%= form_for @length, url:  admin_lengths_path do |f| %>
-		<div class="col-xs-3">
-			<div class="form-group">
-				<%= f.attachment_field :length_image %>
-			</div>
-		</div>
-		<div class="col-xs-7">
-			<div class="form-group">
-				<%= f.label "長さ" %>
-				<%= f.text_field :length_name %>
-			</div>
-		</div>
-		<div class="col-xs-2">
-			<div class="form-group">
-				<%= f.submit '登録' , class:"btn-default btn-lg btn btn-primary " %>
-			</div>
-		</div>
-	<% end %>
+  <%= form_for @length, url:  admin_lengths_path do |f| %>
+    <div class="col-xs-3">
+      <div class="form-group">
+        <%= f.attachment_field :length_image %>
+      </div>
+    </div>
+    <div class="col-xs-7">
+      <div class="form-group">
+        <%= f.label "長さ" %>
+        <%= f.text_field :length_name %>
+      </div>
+    </div>
+    <div class="col-xs-2">
+      <div class="form-group">
+        <%= f.submit '登録' , class:"btn-default btn-lg btn btn-primary " %>
+      </div>
+    </div>
+  <% end %>
 </div>
 <div class="row">
-	<h1>長さ一覧</h1>
+  <h1>長さ一覧</h1>
 </div>
 <div class="row">
-	<table class="table">
-		<% @lengths.each do |length| %>
-			<tr>
-				<div class="col-xs-3">
-					<td>
-						<%= attachment_image_tag length, :length_image, :fill, 40, 40, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40' %><br>
-						<%= length.length_name %>
-					</td>
-				</div>
-				<div class="col-xs-3">
-					<td>
-						<%= link_to "Destroy", admin_length_path(length), method: :delete, data: { confirm: '削除しますか？' }  %>
-					</td>
-				</div>
-			</tr>
-		<% end %>
-	</table>
+  <table class="table">
+    <% @lengths.each do |length| %>
+      <tr>
+        <div class="col-xs-3">
+          <td>
+            <%= attachment_image_tag length, :length_image, :fill, 40, 40, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40' %><br>
+            <%= length.length_name %>
+          </td>
+        </div>
+        <div class="col-xs-3">
+          <td>
+            <%= link_to "Destroy", admin_length_path(length), method: :delete, data: { confirm: '削除しますか？' }  %>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </table>
 </div>

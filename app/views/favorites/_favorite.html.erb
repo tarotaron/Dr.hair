@@ -1,23 +1,25 @@
 <div class="row">
-	<div class="col-xs-1">
-		<div class="favorite">
-			<% if post.favorited_by?(current_user) %>
-				<%= link_to post_favorites_path(post.id), method: :delete, remote: true do %>
-					<i class="far fa-thumbs-down fa-2x" style="color: red;"></i>
-				<% end %>
-			<% else %>
-				<%= link_to post_favorites_path(post.id), method: :post, remote: true do %>
-					<i class="far fa-thumbs-up fa-2x" style="color: red;"></i>
-				<% end %>
-			<% end %>
-		</div>
-	</div>
-	<div class="col-xs-2">
-		<div class="comment_icon-<%= post.id %>" >
-			<i class="far fa-comment-dots fa-2x" ></i>
-		</div>
-	</div>
+  <div class="col-xs-1">
+    <div class="favorite">
+      <% if post.favorited_by?(current_user) %>
+        <%= link_to post_favorites_path(post.id), method: :delete, remote: true do %>
+          <i class="far fa-thumbs-down fa-2x"></i>
+        <% end %>
+      <% else %>
+        <%= link_to post_favorites_path(post.id), method: :post, remote: true do %>
+          <i class="far fa-thumbs-up fa-2x"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-xs-2">
+    <div class="comment_icon-<%= post.id %>" >
+      <div class="icon">
+        <i class="far fa-comment-dots fa-2x" ></i>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="row">
-	<span><%= post.favorites.count %></span> good!
+  <span><%= post.favorites.count %></span> good!
 </div>

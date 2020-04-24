@@ -1,127 +1,127 @@
 <div class="row">
-	<h1>スタイル追加</h1>
+  <h1>スタイル追加</h1>
 </div>
 <div class="row">
-	<% if @style.errors.any? %>
-		<div class="alert-warning">
-			<ul>
-				<% @style.errors.full_messages.each do |message| %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
+  <% if @style.errors.any? %>
+    <div class="alert-warning">
+      <ul>
+        <% @style.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </div>
 <div class="row">
-	<%= form_for @style, url:  admin_styles_path do |f| %>
-		<div class="col-xs-3">
-			<div class="form-group">
-				<div class="row">
-					<%= f.attachment_field :style_image %>
-				</div>
-				<div class="row">
-					<lavel>顔型</lavel>
-					<%= f.collection_select(:form_id, Form.all, :id, :form_name, {prompt: "--選択してください--"}) %>
-				</div>
-				<div class="row">
-					<lavel>髪の長さ</lavel>
-					<%= f.collection_select(:length_id, Length.all, :id, :length_name, {prompt: "--選択してください--"}) %>
-				</div>
-			</div>
-		</div>
-		<div class="col-xs-6">
-			<div class="form-group">
-				<%= f.text_area :style_body %>
-			</div>
-		</div>
-		<div class="col-xs-3">
-			<div class="row">
-				<div class="form-group">
-					<%= f.text_field :style_name %>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="form-group">
-				<%= f.submit '登録' , class:"btn-default btn-lg btn btn-primary " %>
-			</div>
-		</div>
-	<% end %>
+  <%= form_for @style, url:  admin_styles_path do |f| %>
+    <div class="col-xs-3">
+      <div class="form-group">
+        <div class="row">
+          <%= f.attachment_field :style_image %>
+        </div>
+        <div class="row">
+          <lavel>顔型</lavel>
+          <%= f.collection_select(:form_id, Form.all, :id, :form_name, {prompt: "--選択してください--"}) %>
+        </div>
+        <div class="row">
+          <lavel>髪の長さ</lavel>
+          <%= f.collection_select(:length_id, Length.all, :id, :length_name, {prompt: "--選択してください--"}) %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="form-group">
+        <%= f.text_area :style_body %>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <div class="row">
+        <div class="form-group">
+          <%= f.text_field :style_name %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <%= f.submit '登録' , class:"btn-default btn-lg btn btn-primary " %>
+      </div>
+    </div>
+  <% end %>
 </div>
 <div class="row">
-	<h1>スタイル一覧</h1>
+  <h1>スタイル一覧</h1>
 </div>
 <div class="row">
-	<table class="table">
-		<% @styles.each do |style| %>
-			<tr>
-				<td>
-					<%= attachment_image_tag style, :style_image, :fill, 40, 40, format: 'jpeg'%>
-				</td>
-				<td>
-					<%= style.form.form_name %><br>
-					<%= style.length.length_name %>
-				</td>
-				<td>
-					<%= style.style_body %>
-				</td>
-				<td>
-					<%= style.style_name %>
-				</td>
-				<td>
-					<div class="post_edit_modal">
-						<button type="button" class="btn  btn-sm" data-toggle="modal" data-target="#styleEditModal<%= style.id %>" data-backdrop="false">Edit</button>
-						<div class="modal" id="styleEditModal<%= style.id %>" role="dialog" >
-							<div class="modal-dialog modal-dialog-centered" >
-								<div class="modal-content" id="edit_modal">
-									<div class="modal-header">
-										<h1 class="modal_title">Edit style</h1>
-											<button type="button" class="close" data-dismiss="modal" >
-													<span class="glyphicon glyphicon-remove" ></span>
-											</button>
-									</div>
-									<%= form_for style, url:admin_style_path(style) do |f| %>
-										<div class="modal-body">
-											<div class="row">
-												<div class="form-group">
-													<div class="row">
-														<%= f.attachment_field :style_image %>
-													</div>
-													<div class="row">
-														<lavel>顔型</lavel>
-															<%= f.collection_select(:form_id, Form.all, :id, :form_name, {prompt: "--選択してください--"}) %>
-													</div>
-													<div class="row">
-														<lavel>髪の長さ</lavel>
-															<%= f.collection_select(:length_id, Length.all, :id, :length_name, {prompt: "--選択してください--"}) %>
-													</div>
-													<div class="row">
-														<%= f.text_area :style_body, rows:'2', class: "form-control"  %>
-													</div>
-													<div class="row">
-														<%= f.text_area :style_name, rows:'2', class: "form-control"  %>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="modal-footer">
-											<div class="form-group">
-												<div class="col-xs-3">
-													<%= f.submit 'Update' , class:"btn-default btn-lg" %>
-												</div>
-												<div class="col-xs-3">
-													<%= link_to "Destroy", admin_style_path(style), method: :delete, data: { confirm: '削除しますか？' }, class:"btn-default btn-lg"   %>
-												</div>
-											</div>
-										</div>
-									<% end %>
-								</div>
-							</div>
-						</div>
-					</div>
-				</td>
-			</tr>
-		<% end %>
-	</table>
+  <table class="table">
+    <% @styles.each do |style| %>
+      <tr>
+        <td>
+          <%= attachment_image_tag style, :style_image, :fill, 40, 40, format: 'jpeg'%>
+        </td>
+        <td>
+          <%= style.form.form_name %><br>
+          <%= style.length.length_name %>
+        </td>
+        <td>
+          <%= style.style_body %>
+        </td>
+        <td>
+          <%= style.style_name %>
+        </td>
+        <td>
+          <div class="post_edit_modal">
+            <button type="button" class="btn  btn-sm" data-toggle="modal" data-target="#styleEditModal<%= style.id %>" data-backdrop="false">Edit</button>
+            <div class="modal" id="styleEditModal<%= style.id %>" role="dialog" >
+              <div class="modal-dialog modal-dialog-centered" >
+                <div class="modal-content" id="edit_modal">
+                  <div class="modal-header">
+                    <h1 class="modal_title">Edit style</h1>
+                      <button type="button" class="close" data-dismiss="modal" >
+                          <span class="glyphicon glyphicon-remove" ></span>
+                      </button>
+                  </div>
+                  <%= form_for style, url:admin_style_path(style) do |f| %>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="form-group">
+                          <div class="row">
+                            <%= f.attachment_field :style_image %>
+                          </div>
+                          <div class="row">
+                            <lavel>顔型</lavel>
+                              <%= f.collection_select(:form_id, Form.all, :id, :form_name, {prompt: "--選択してください--"}) %>
+                          </div>
+                          <div class="row">
+                            <lavel>髪の長さ</lavel>
+                              <%= f.collection_select(:length_id, Length.all, :id, :length_name, {prompt: "--選択してください--"}) %>
+                          </div>
+                          <div class="row">
+                            <%= f.text_area :style_body, rows:'2', class: "form-control"  %>
+                          </div>
+                          <div class="row">
+                            <%= f.text_area :style_name, rows:'2', class: "form-control"  %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <div class="form-group">
+                        <div class="col-xs-3">
+                          <%= f.submit 'Update' , class:"btn-default btn-lg" %>
+                        </div>
+                        <div class="col-xs-3">
+                          <%= link_to "Destroy", admin_style_path(style), method: :delete, data: { confirm: '削除しますか？' }, class:"btn-default btn-lg"   %>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
