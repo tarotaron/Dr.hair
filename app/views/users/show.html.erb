@@ -1,138 +1,138 @@
 <div class="row">
-	<div class="media">
-		<div class="col-xs-3">
-			<%= attachment_image_tag @user, :icon_image, format: 'jpeg', fallback: "20161008_noimage 2 2.png",size:'100x100', id:"user_image",class:"img-circle"%>
-		</div>
-		<div class="col-xs-9">
-			<div class="row" id="media_body">
-				<div class="col-xs-7 ">
-					<h3 class="media_name">
-						<%= @user.name %>
-					</h3>
-				</div>
-				<div class="col-xs-5 ">
-					<% if @user.id == current_user.id %>
-						<div class="alert-warning">
-							<% unless @update_post.nil? %>
-								<% if @update_post.errors.any? %>
-									<ul>
-										<% @update_post.errors.full_messages.each do |message| %>
-											<li><%= message %></li>
-										<% end %>
-									</ul>
-								<% end %>
-							<% end %>
-						</div>
-						<div class="user_edit_modal">
-							<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#userEditModal" data-backdrop="false">
-								<span class="glyphicon glyphicon-cog"></span>
-							</button>
-							<div class="modal" id="userEditModal" role="dialog" >
-								<div class="modal-dialog modal-dialog-centered" >
-									<div class="modal-content" id="edit_modal">
-										<%= form_for @user do |f| %>
-											<div class="modal-header">
-												<h1 class="modal-title">Edit User</h1>
-													<button type="button" class="close" data-dismiss="modal" >
-														<span class="glyphicon glyphicon-remove" ></span>
-													</button>
-											</div>
-											<div class="modal-body">
-												<div class="row">
-													<% if @user.errors.any? %>
-														<div class="alert-warning">
-															<ul>
-																<% @user.errors.full_messages.each do |message| %>
-																	<li><%= message %></li>
-																<% end %>
-															</ul>
-														</div>
-													<% end %>
-												</div>
-												<div class="row">
-													<div class="form-group">
-														<%= f.label "ニックネーム" %>
-														<%= f.text_field :name , rows:'1', class: "form-control"%>
-													</div>
-													<div class="form-group">
-														<%= f.attachment_field :icon_image, class: "image" %>
-															<% if @user.icon_image_id.present? %>
-																<%= attachment_image_tag @user, :icon_image, class: "img_prev" %>
-															<% else %>
-																<%= image_tag "20161008_noimage 2 2.png", class: "img_prev" %>
-															<% end %>
-													</div>
-												</div>
-											</div>
-											<div class="modal-footer">
-												<div class="form-group">
-													<%= f.submit 'Update' , class:"btn-default btn-lg btn " %>
-												</div>
-											</div>
-										<% end %>
-									</div>
-								</div>
-							</div>
-						</div>
-					<% end %>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="media">
+    <div class="col-xs-3">
+      <%= attachment_image_tag @user, :icon_image, format: 'jpeg', fallback: "20161008_noimage 2 2.png",size:'100x100', id:"user_image",class:"img-circle"%>
+    </div>
+    <div class="col-xs-9">
+      <div class="row" id="media_body">
+        <div class="col-xs-7 ">
+          <h3 class="media_name">
+            <%= @user.name %>
+          </h3>
+        </div>
+        <div class="col-xs-5 ">
+          <% if @user.id == current_user.id %>
+            <div class="alert-warning">
+              <% unless @update_post.nil? %>
+                <% if @update_post.errors.any? %>
+                  <ul>
+                    <% @update_post.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="user_edit_modal">
+              <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#userEditModal" data-backdrop="false">
+                <span class="glyphicon glyphicon-cog"></span>
+              </button>
+              <div class="modal" id="userEditModal" role="dialog" >
+                <div class="modal-dialog modal-dialog-centered" >
+                  <div class="modal-content" id="edit_modal">
+                    <%= form_for @user do |f| %>
+                      <div class="modal-header">
+                        <h1 class="modal-title">Edit User</h1>
+                          <button type="button" class="close" data-dismiss="modal" >
+                            <span class="glyphicon glyphicon-remove" ></span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <% if @user.errors.any? %>
+                            <div class="alert-warning">
+                              <ul>
+                                <% @user.errors.full_messages.each do |message| %>
+                                  <li><%= message %></li>
+                                <% end %>
+                              </ul>
+                            </div>
+                          <% end %>
+                        </div>
+                        <div class="row">
+                          <div class="form-group">
+                            <%= f.label "ニックネーム" %>
+                            <%= f.text_field :name , rows:'1', class: "form-control"%>
+                          </div>
+                          <div class="form-group">
+                            <%= f.attachment_field :icon_image, class: "image" %>
+                              <% if @user.icon_image_id.present? %>
+                                <%= attachment_image_tag @user, :icon_image, class: "img_prev" %>
+                              <% else %>
+                                <%= image_tag "20161008_noimage 2 2.png", class: "img_prev" %>
+                              <% end %>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <div class="form-group">
+                          <%= f.submit 'Update' , class:"btn-default btn-lg btn " %>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="row">
-	<table class="table">
-		<tbody>
-			<% @posts.each_slice(3) do |slice|  %>
-				<tr>
-					<% slice.each do |post| %>
-						<td>
-							<div class="user_post">
-								<div class="row">
-									<% if post.user_id == current_user.id %>
-										<%= render 'posts/edit', post: post %>
-									<% end %>
-									<div class="user">
-										<button type="button" data-toggle="modal" data-target="#postModal<%= post.id %>" data-backdrop="false" id="post_image">
-											<%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'300x300',id:"post_image" %>
-											<p class="far fa-thumbs-up"><%= post.favorites.count %></p>
-											<i class="far fa-comment fa-2x"><%= post.comments.count %></i>
-										</button>
-										<div class="modal" id="postModal<%= post.id %>" role="dialog" >
-											<div class="modal-dialog modal-dialog-centered" >
-												<div class="modal-content" id="post_modal">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal" >
-															<span class="glyphicon glyphicon-remove" ></span>
-														</button>
-													</div>
-													<div class="modal-body">
-														<div class="user_post">
-															<div class="row">
-																<div class="modal_image">
-																	<%= attachment_image_tag post, :post_image, :fill, 500, 500, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'500x500' %>
-																</div>
-															</div>
-															<div class="row">
-																<div id="favorite_btn-<%= post.id %>">
-																	<%= render 'favorites/favorite', post: post %>
-																</div>
-															</div>
-															<div class="post_collapse">
-																<%= render 'posts/collapse', post: post %>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</td>
-					<% end %>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
+  <table class="table">
+    <tbody>
+      <% @posts.each_slice(3) do |slice|  %>
+        <tr>
+          <% slice.each do |post| %>
+            <td>
+              <div class="user_post">
+                <div class="row">
+                  <% if post.user_id == current_user.id %>
+                    <%= render 'posts/edit', post: post %>
+                  <% end %>
+                  <div class="user">
+                    <button type="button" data-toggle="modal" data-target="#postModal<%= post.id %>" data-backdrop="false" id="post_image">
+                      <%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'300x300',id:"post_image" %>
+                      <p class="far fa-thumbs-up"><%= post.favorites.count %></p>
+                      <i class="far fa-comment fa-2x"><%= post.comments.count %></i>
+                    </button>
+                    <div class="modal" id="postModal<%= post.id %>" role="dialog" >
+                      <div class="modal-dialog modal-dialog-centered" >
+                        <div class="modal-content" id="post_modal">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" >
+                              <span class="glyphicon glyphicon-remove" ></span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="user_post">
+                              <div class="row">
+                                <div class="modal_image">
+                                  <%= attachment_image_tag post, :post_image, :fill, 500, 500, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'500x500' %>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div id="favorite_btn-<%= post.id %>">
+                                  <%= render 'favorites/favorite', post: post %>
+                                </div>
+                              </div>
+                              <div class="post_collapse">
+                                <%= render 'posts/collapse', post: post %>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

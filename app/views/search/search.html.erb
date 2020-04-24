@@ -1,44 +1,44 @@
 <div class="row">
-	<div class="col-xs-12">
-		<h1>Search Word "<%=@search %>" </h1>
-	</div>
+  <div class="col-xs-12">
+    <h1>Search Word "<%=@search %>" </h1>
+  </div>
 </div>
 <div class="row">
-	<table class="table">
-		<% @posts.each do |post| %>
-			<tr>
-				<td>
-					<div class="post_index">
-						<div class="row">
-							<%= link_to user_path(post.user.id) do %>
-								<div class="post_user_image">
-									<div class="col-xs-2">
-										<%= attachment_image_tag post.user, :icon_image, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40', id:"mini_user_image",class:"img-circle" %>
-									</div>
-								</div>
-								<div class="post_user_name">
-									<div class="col-xs-2">
-										<%= post.user.name %>
-									</div>
-								</div>
-							<% end %>
-						</div>
-						<div class="row">
-							<div class="list_image">
-								<%= attachment_image_tag post, :post_image, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'550x550'  %>
-							</div>
-							<div id="favorite_btn-<%= post.id %>" class="post_body">
-								<%= render 'favorites/favorite', post: post %>
-							</div>
-						</div>
-						<div class="row">
-							<div class="post_collapse">
-								<%= render 'posts/collapse', post: post %>
-							</div>
-						</div>
-					</div>
-				</td>
-			<tr>
-		<% end %>
-	</table>
+  <table class="table">
+    <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <div class="post_index">
+            <div class="row">
+              <%= link_to user_path(post.user.id) do %>
+                <div class="post_user_image">
+                  <div class="col-xs-2">
+                    <%= attachment_image_tag post.user, :icon_image, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40', id:"mini_user_image",class:"img-circle" %>
+                  </div>
+                </div>
+                <div class="post_user_name">
+                  <div class="col-xs-2">
+                    <%= post.user.name %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="row">
+              <div class="list_image">
+                <%= attachment_image_tag post, :post_image, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'550x550'  %>
+              </div>
+              <div id="favorite_btn-<%= post.id %>" class="post_body">
+                <%= render 'favorites/favorite', post: post %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="post_collapse">
+                <%= render 'posts/collapse', post: post %>
+              </div>
+            </div>
+          </div>
+        </td>
+      <tr>
+    <% end %>
+  </table>
 </div>

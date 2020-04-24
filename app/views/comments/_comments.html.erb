@@ -1,24 +1,24 @@
 <ul style="list-style:none;">
-	<% post.comments.each do |comment| %>
-		<div class="row">
-			<li class="comment">
-				<div class="col-xs-1">
-					<%= attachment_image_tag comment.user, :icon_image, :fill, 40, 40, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40' , class:"img-circle", id:"comment_user_image" %>
-					</div>
-				<div class="col-xs-9">
-					<%= comment.user.name %>
-					<%= comment.comment %>
-					<br>
-					<font color =grey>
-						<%= comment.created_at.strftime('%Y/%m/%d') %>
-					</font>
-				</div>
-					<% if comment.user_id == current_user.id %>
-						<div class="col-xs-2">
-							<%= link_to "", post_comment_path(post_id: post, id: comment), method: :delete, remote:true, data: { confirm: '削除しますか？' }, class:"glyphicon glyphicon-trash" %>
-						</div>
-					<% end %>
-			</li>
-		</div>
-	<% end %>
+  <% post.comments.each do |comment| %>
+    <div class="row">
+      <li class="comment">
+        <div class="col-xs-1">
+          <%= attachment_image_tag comment.user, :icon_image, :fill, 40, 40, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40' , class:"img-circle", id:"comment_user_image" %>
+          </div>
+        <div class="col-xs-9">
+          <%= comment.user.name %>
+          <%= comment.comment %>
+          <br>
+          <font color =grey>
+            <%= comment.created_at.strftime('%Y/%m/%d') %>
+          </font>
+        </div>
+          <% if comment.user_id == current_user.id %>
+            <div class="col-xs-2">
+              <%= link_to "", post_comment_path(post_id: post, id: comment), method: :delete, remote:true, data: { confirm: '削除しますか？' }, class:"glyphicon glyphicon-trash" %>
+            </div>
+          <% end %>
+      </li>
+    </div>
+  <% end %>
 </ul>

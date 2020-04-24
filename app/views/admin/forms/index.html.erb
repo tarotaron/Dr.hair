@@ -1,54 +1,54 @@
 <div class="row">
-	<h1>顔型追加</h1>
+  <h1>顔型追加</h1>
 </div>
 <div class="row">
-	<div class="col-xs-3">
-		<div class="form-group">
-			<%= form_for @form, url:  admin_forms_path do |f| %>
-				<%= f.attachment_field :form_image %>
-		</div>
-	</div>
-	<div class="col-xs-7">
-		<div class="form-group">
-			<%= f.label "形の名前" %>
-			<%= f.text_field :form_name %>
-		</div>
-		<div class="form-group">
-			<%= f.label "説明文" %>
-			<%= f.text_area :form_body %>
-		</div>
-	</div>
-	<div class="col-xs-2">
-		<div class="form-group">
-			<%= f.submit '登録' , class:"btn-default btn-lg btn btn-primary " %>
-			<% end %>
-		</div>
-	</div>
+  <div class="col-xs-3">
+    <div class="form-group">
+      <%= form_for @form, url:  admin_forms_path do |f| %>
+        <%= f.attachment_field :form_image %>
+    </div>
+  </div>
+  <div class="col-xs-7">
+    <div class="form-group">
+      <%= f.label "形の名前" %>
+      <%= f.text_field :form_name %>
+    </div>
+    <div class="form-group">
+      <%= f.label "説明文" %>
+      <%= f.text_area :form_body %>
+    </div>
+  </div>
+  <div class="col-xs-2">
+    <div class="form-group">
+      <%= f.submit '登録' , class:"btn-default btn-lg btn btn-primary " %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <div class="row">
-	<h1>顔型一覧</h1>
+  <h1>顔型一覧</h1>
 </div>
 <div class="row">
-	<table class="table">
-		<% @forms.each do |form| %>
-			<tr>
-				<div class="col-xs-3">
-					<td>
-						<%= attachment_image_tag form, :form_image, :fill, 40, 40, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40' %><br>
-						<%= form.form_name %>
-					</td>
-				</div>
-				<div class="col-xs-6">
-					<td>
-						<%= form.form_body %>
-					</td>
-				</div>
-				<div class="col-xs-3">
-					<td>
-						<%= link_to "Destroy", admin_form_path(form), method: :delete, data: { confirm: '削除しますか？' }  %>
-					</td>
-				</div>
-			</tr>
-		<% end %>
-	</table>
+  <table class="table">
+    <% @forms.each do |form| %>
+      <tr>
+        <div class="col-xs-3">
+          <td>
+            <%= attachment_image_tag form, :form_image, :fill, 40, 40, format: 'jpeg', fallback: "20161008_noimage 2 2.png", size:'40x40' %><br>
+            <%= form.form_name %>
+          </td>
+        </div>
+        <div class="col-xs-6">
+          <td>
+            <%= form.form_body %>
+          </td>
+        </div>
+        <div class="col-xs-3">
+          <td>
+            <%= link_to "Destroy", admin_form_path(form), method: :delete, data: { confirm: '削除しますか？' }  %>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </table>
 </div>
