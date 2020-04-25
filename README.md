@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Dr .hair
+自分自身のヘアスタイルに関するpersonalを見つけ発進するサービスです
+!(app/assets/images/ 2020-04-25 17.07.12.png)
+!(app/assets/images/2020-04-25 17.07.33.png)
+顔の形や髪の長さに合わせてあなたのpersonalを検索できます。
+その気になったワードで検索する事で一人一人に合った記事が検索する事ができます。
 
-Things you may want to cover:
+# Dependency
+使用言語とバージョン、必要なライブラリとそのバージョンを書く
+Pythonならrequirements.txtを用意するのも良い
 
-* Ruby version
+# Setup
+セットアップ方法を書く。用意するハードウェアとソフトウェアをセットアップするためのコマンドを記載する
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Usage
+使い方。なるべく具体的に書く。サンプルも書く
